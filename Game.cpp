@@ -9,7 +9,7 @@ Game::Game(QWidget *parent)
     connect(runtime, SIGNAL(timeout()), this, SLOT(update()));
     //ÉèÖÃ±³¾°Í¼Æ¬
     QPalette pal = this->palette();
-    pal.setBrush(QPalette::Background, QBrush(QPixmap("pictures/background.png")));
+    pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/background.png")));
     setPalette(pal);
     srand((int)time(0));
     for (int i = 0; i < 10; i++) {

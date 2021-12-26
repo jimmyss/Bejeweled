@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <vector>
-#include<qdebug.h>
+#include <qdebug.h>
 using namespace std;
 
 class Bejewled {

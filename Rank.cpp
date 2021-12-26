@@ -6,7 +6,7 @@ Rank::Rank(QWidget *parent)
 {
 	ui.setupUi(this);
 	QPalette pal = this->palette();
-	pal.setBrush(QPalette::Background, QBrush(QPixmap("pictures/recordbackground.jpg")));
+	pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/recordbackground.jpg")));
 	setPalette(pal);
 	showRank();
 }

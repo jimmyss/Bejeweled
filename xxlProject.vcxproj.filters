@@ -52,6 +52,9 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DButil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="xxlProject.ui">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DButil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

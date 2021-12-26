@@ -34,10 +34,10 @@ int Bejewled::searchDown(int i, int j) {
 }
 
 int Bejewled::search(int i, int j) {
-    qDebug() << "up:" << searchUp(i - 1, j) << endl;
-    qDebug() << "down:" << searchDown(i + 1, j) << endl;
-    qDebug() << "left:" << searchLeft(i, j - 1) << endl;
-    qDebug() << "right:" << searchRight(i, j + 1) << endl;
+    qDebug() << "up:" << searchUp(i - 1, j);
+    qDebug() << "down:" << searchDown(i + 1, j);
+    qDebug() << "left:" << searchLeft(i, j - 1);
+    qDebug() << "right:" << searchRight(i, j + 1);
     return 0;
 }
 
@@ -109,7 +109,6 @@ void Bejewled::dispaly() {
         for (int j = 0; j < col; ++j) {
             qDebug() << graph[i][j];
         }
-        qDebug() << endl;
     }
 }
 

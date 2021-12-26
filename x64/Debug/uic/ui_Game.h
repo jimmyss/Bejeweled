@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Game.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -46,14 +46,14 @@ public:
 
     void retranslateUi(QWidget *Game)
     {
-        Game->setWindowTitle(QApplication::translate("Game", "QtWidgetsClass", nullptr));
-        textEdit->setHtml(QApplication::translate("Game", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        Game->setWindowTitle(QCoreApplication::translate("Game", "QtWidgetsClass", nullptr));
+        textEdit->setHtml(QCoreApplication::translate("Game", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\347\212\266\346\200\201\346\240\217\357\274\237</p></body></html>", nullptr));
-        pushButtonFinish->setText(QApplication::translate("Game", "\347\273\223\346\235\237", nullptr));
-        pushButtonHint->setText(QApplication::translate("Game", "\346\217\220\347\244\272", nullptr));
+        pushButtonFinish->setText(QCoreApplication::translate("Game", "\347\273\223\346\235\237", nullptr));
+        pushButtonHint->setText(QCoreApplication::translate("Game", "\346\217\220\347\244\272", nullptr));
     } // retranslateUi
 
 };

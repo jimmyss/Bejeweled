@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Help.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -37,8 +37,8 @@ public:
 
     void retranslateUi(QWidget *Help)
     {
-        Help->setWindowTitle(QApplication::translate("Help", "QtWidgetsClass", nullptr));
-        label->setText(QApplication::translate("Help", "Help", nullptr));
+        Help->setWindowTitle(QCoreApplication::translate("Help", "QtWidgetsClass", nullptr));
+        label->setText(QCoreApplication::translate("Help", "Help", nullptr));
     } // retranslateUi
 
 };
