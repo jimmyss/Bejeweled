@@ -113,19 +113,23 @@ bool Bejewled::isCanSwap(int i, int j, int a, int b) {
         left = searchLeft(a, b - 1);
         right = searchRight(a, b + 1);
         up = searchUp(a - 1, b);
-        if (left + right > 1 || up > 1)
+        if (left + right > 1 || up > 1) 
             return true;
         left = searchLeft(i, j - 1);
         right = searchRight(i, j + 1);
         down = searchDown(i + 1, j);
-        if (left + right > 1 || down > 1)
+        if (left + right > 1 || down > 1) 
             return true;
     }
 
-    tmp = graph[i][j];
-    graph[i][j] = graph[a][b];
-    graph[a][b] = tmp;
+    switchGem(i, j, a, b);
     return false;
+}
+
+void Bejewled::switchGem(int i, int j, int a, int b) {
+    int temp = graph[i][j];
+    graph[i][j] = graph[a][b];
+    graph[a][b] = temp;
 }
 
 Bejewled::Bejewled() {
@@ -144,6 +148,18 @@ void Bejewled::dispaly() {
         }
         qDebug() << " ";
     }
+    
+}
+
+void Bejewled::showBomb(Gem* gems[10][10]) {
+    int size = bomb.size();
+    int x, y;
+    for (int k = 0; k < size; k++) {
+        x = bomb.front().first;
+        y = bomb.front().second;
+        gems[x][y]->bomb();
+        bomb.pop();
+    }
 }
 
 // check, swap and ajust the graph
@@ -154,30 +170,39 @@ void Bejewled::swap(int i, int j, int a, int b) {
     int tmp;
     int target;
     int left = 0, right = 0, up = 0, down = 0;
+    pair<int, int> pos;
 
     target = graph[i][j];
     up = searchUp(i - 1, j);
     down = searchDown(i + 1, j);
     if (up + down > 1) {
-        for (tmp = i; tmp >= i-up; --tmp) {
+        graph[i][j] = -1;
+        bomb.push(pos=make_pair(i,j));
+        for (tmp = i-1; tmp >= i-up; --tmp) {
             //if (graph[tmp][j] == target)
                 graph[tmp][j] = -1;
+                bomb.push(pos=make_pair(tmp, j));
         }
-        for (tmp = i; tmp <= i+down; ++tmp) {
+        for (tmp = i+1; tmp <= i+down; ++tmp) {
             //if (graph[tmp][j] == target)
                 graph[tmp][j] = -1;
+                bomb.push(pos=make_pair(tmp, j));
         }
     }
     left = searchLeft(i, j - 1);
     right = searchRight(i, j + 1);
     if (left + right > 1) {
-        for (tmp = j; tmp >= j-left; --tmp) {
+        graph[i][j] = -1;
+        bomb.push(pos=make_pair(i, j));
+        for (tmp = j-1; tmp >= j-left; --tmp) {
             //if (graph[i][tmp] == target)
                 graph[i][tmp] = -1;
+                bomb.push(pos=make_pair(i, tmp));
         }
-        for (tmp = j; tmp <= j+right; ++tmp) {
+        for (tmp = j+1; tmp <= j+right; ++tmp) {
             //if (graph[i][tmp] == target)
                 graph[i][tmp] = -1;
+                bomb.push(pos=make_pair(i, tmp));
         }
     }
 
@@ -185,46 +210,65 @@ void Bejewled::swap(int i, int j, int a, int b) {
     up = searchUp(a - 1, b);
     down = searchDown(a + 1, b);
     if (up + down > 1) {
-        for (tmp = a; tmp >= a-up; --tmp) {
+        graph[a][b] = -1;
+        bomb.push(pos=make_pair(a, b));
+        for (tmp = a-1; tmp >= a-up; --tmp) {
             /*if (graph[tmp][b] == target)*/
                 graph[tmp][b] = -1;
+                bomb.push(pos=make_pair(tmp, b));
         }
-        for (tmp = a; tmp <= a+down; ++tmp) {
+        for (tmp = a+1; tmp <= a+down; ++tmp) {
             /*if (graph[tmp][b] == target)*/
                 graph[tmp][b] = -1;
+                bomb.push(pos=make_pair(tmp, b));
         }
     }
     left = searchLeft(a, b - 1);
     right = searchRight(a, b + 1);
     if (left + right > 1) {
-        for (tmp = b; tmp >= b-left; --tmp) {
+        graph[a][b] = -1;
+        bomb.push(pos=make_pair(a, b));
+        for (tmp = b-1; tmp >= b-left; --tmp) {
             //if (graph[a][tmp] == target)
                 graph[a][tmp] = -1;
+                bomb.push(pos=make_pair(a, tmp));
         }
-        for (tmp = b; tmp <= b+right; ++tmp) {
+        for (tmp = b+1; tmp <= b+right; ++tmp) {
             //if (graph[a][tmp] == target)
                 graph[a][tmp] = -1;
+                bomb.push(pos=make_pair(a, tmp));
         }
     }
+    //// fill the empty place and generate new items
+    //for (int i = row - 1; i >= 0; --i) {
+    //    for (int j = 0; j < col; ++j) {
+    //        if (graph[i][j] == -1) {
+    //            for (int k = i; k > 0; --k) {
+    //                graph[k][j] = graph[k - 1][j];
+    //            }
+    //            graph[0][j] = rand() % 7;
+    //        }
+    //    }
+    //}
+}
 
+void Bejewled::fallGem(vector<vector<int>>fallM, vector<vector<int>>genM) {
     // fill the empty place and generate new items
     for (int i = row - 1; i >= 0; --i) {
         for (int j = 0; j < col; ++j) {
             if (graph[i][j] == -1) {
                 for (int k = i; k > 0; --k) {
                     graph[k][j] = graph[k - 1][j];
+                    if (graph[k][j] != -1)
+                        fallM[k][j] += 1;
                 }
                 graph[0][j] = rand() % 7;
             }
         }
     }
-    adjust();
-    this->dispaly();
 }
-
-
 // ajust the graph to avoid left 3-item cases
-void Bejewled::adjust() {
+void Bejewled::adjust(vector<vector<int>>fallM,vector<vector<int>>genM) {
     int tmp;
     int target;
     int left, right, up, down;

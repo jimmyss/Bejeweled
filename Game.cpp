@@ -16,7 +16,7 @@ Game::Game(QWidget *parent)
         for (int j = 0; j < 10; j++) {
             int rNum = rand() % 7;
             rule->setGraph(i, j, rNum);
-            rule->adjust();
+            rule->adjust(fallMatrix,generateMatrix);
         }
     }
     for (int i = 0; i < 10; i++) {
@@ -25,6 +25,8 @@ Game::Game(QWidget *parent)
             connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ĞÅºÅ0
         }
     }
+    fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+    generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
 }
 
 Game::~Game()
@@ -55,6 +57,10 @@ void Game::move(int x1, int y1, int x2, int y2) {//(20,100)-(440,520)ÄÚ £¨x1,y1£
     paintState = 1;
     update();
     update();
+}
+
+void Game::setGems(int x, int y, int type) {
+    gems[x][y]=new Gem(rule->getGraph(x, y), 42, y, x, this);
 }
 
 void Game::fallAnimation(Gem* gem, int h, int flag) {
@@ -91,11 +97,12 @@ void Game::fallAnimation(Gem* gem, int h, int flag) {
 
 void Game::resetGem() {
     //Ïû³ı·½¿é
+    rule->showBomb(gems);
     //Éú³ÉĞÂ·½¿é
+    rule->fallGem(fallMatrix,generateMatrix);
 }
 
 void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ½¸ö¿é¿é¶ù´«¸øruleÅĞ¶ÏÊÇ·ñ¿ÉÖ´ĞĞ
-    //test
     if (gCounter == 0) {
         g1 = qobject_cast<Gem*>(sender());//°ÑĞÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàĞÍ
         gCounter = 1;
@@ -142,9 +149,17 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
         }
         else
         {
-            rule->swap(g1->y(), g1->x(), g2->y(), g2->x());
-            qDebug() << "swap" << g1->type() << "," << g2->type() << "ok";
-            resetGem();
+            Gem* temp;
+            temp = gems[g1y][g1x];
+            gems[g1y][g1x] = gems[g2y][g2x];
+            gems[g2y][g2x] = temp;
+            rule->switchGem(g1y, g1x, g2y, g2x);
+            rule->swap(g1y, g1x, g2y, g2x);
+            bool endFlag = true;
+            while (true) {
+                resetGem();
+                rule->adjust(fallMatrix,generateMatrix);
+            }
         }
         gCounter = 0;
     }

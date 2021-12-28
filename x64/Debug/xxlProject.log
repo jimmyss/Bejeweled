@@ -1,4 +1,10 @@
-﻿  Game.cpp
-E:\系统默认\桌面\xxl-project\Game.cpp(40,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
-E:\系统默认\桌面\xxl-project\Game.cpp(40,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
+﻿  moc Game.h
+  Game.cpp
+  main.cpp
+  rule.cpp
+  xxlProject.cpp
+E:\系统默认\桌面\xxl-project\Game.cpp(42,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
+E:\系统默认\桌面\xxl-project\Game.cpp(42,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
+  moc_Game.cpp
+  moc_xxlProject.cpp
   xxlProject.vcxproj -> E:\系统默认\桌面\xxl-project\x64\Debug\xxlProject.exe
