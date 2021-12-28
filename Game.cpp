@@ -156,10 +156,8 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
             rule->switchGem(g1y, g1x, g2y, g2x);
             rule->swap(g1y, g1x, g2y, g2x);
             bool endFlag = true;
-            while (true) {
-                resetGem();
-                rule->adjust(fallMatrix,generateMatrix);
-            }
+            resetGem();
+            rule->adjust(fallMatrix,generateMatrix);
         }
         gCounter = 0;
     }
