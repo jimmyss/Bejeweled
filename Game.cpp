@@ -95,6 +95,7 @@ void Game::resetGem() {
 }
 
 void Game::buttonClicked() {//2021-12-21 杜世茂 buttonClicked原内容改成将选中的两个块块儿传给rule判断是否可执行
+    //test
     if (gCounter == 0) {
         g1 = qobject_cast<Gem*>(sender());//把信号的发送者转换成pushbutton类型
         gCounter = 1;
