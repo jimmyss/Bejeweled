@@ -24,7 +24,7 @@ public:
 	Game(QWidget *parent = Q_NULLPTR);
 	~Game();
 	void fallAnimation(Gem* gem, int h, int flag);
-
+	void resetGem();
 protected:
 	virtual void mousePressEvent(QMouseEvent* event);
 
@@ -32,7 +32,7 @@ private:
 	Ui::Game ui;
 	int click_x, click_y;
 	int move_x1, move_x2, move_y1, move_y2;
-	int gCounter = 0;
+	int gCounter = 0;//用于记录点了多少次方块，点两次时执行交换
 	Gem* g1;
 	Gem* g2;//2021-12-21 杜世茂 g1和g2分别表示两个块块儿
 	Gem* gems[10][10];

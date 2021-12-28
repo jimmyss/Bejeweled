@@ -28,16 +28,16 @@ public:
     {
         if (Game->objectName().isEmpty())
             Game->setObjectName(QString::fromUtf8("Game"));
-        Game->resize(400, 300);
+        Game->resize(568, 585);
         textEdit = new QTextEdit(Game);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(70, 90, 141, 61));
+        textEdit->setGeometry(QRect(0, 0, 141, 61));
         pushButtonFinish = new QPushButton(Game);
         pushButtonFinish->setObjectName(QString::fromUtf8("pushButtonFinish"));
-        pushButtonFinish->setGeometry(QRect(380, 100, 93, 28));
+        pushButtonFinish->setGeometry(QRect(310, 10, 93, 28));
         pushButtonHint = new QPushButton(Game);
         pushButtonHint->setObjectName(QString::fromUtf8("pushButtonHint"));
-        pushButtonHint->setGeometry(QRect(250, 100, 93, 28));
+        pushButtonHint->setGeometry(QRect(180, 10, 93, 28));
 
         retranslateUi(Game);
 

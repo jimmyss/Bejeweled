@@ -1,27 +1,27 @@
 QMAKE_CXX.QT_COMPILER_STDCXX = 199711L
-QMAKE_CXX.QMAKE_MSC_VER = 1930
-QMAKE_CXX.QMAKE_MSC_FULL_VER = 193030706
+QMAKE_CXX.QMAKE_MSC_VER = 1929
+QMAKE_CXX.QMAKE_MSC_FULL_VER = 192930133
 QMAKE_CXX.COMPILER_MACROS = \
     QT_COMPILER_STDCXX \
     QMAKE_MSC_VER \
     QMAKE_MSC_FULL_VER
 QMAKE_CXX.INCDIRS = \
-    D:\\Qt\\6.1.3\\msvc2019_64 \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\include" \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\atlmfc\\include" \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include" \
+    F:\\Qt\\5.12.11\\msvc2017_64\\include \
+    "E:\\Visual Studio\\VC\\Tools\\MSVC\\14.29.30133\\include" \
+    "E:\\Visual Studio\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include" \
+    "E:\\Visual Studio\\VC\\Auxiliary\\VS\\include" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt" \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\include" \
+    "E:\\Visual Studio\\VC\\Auxiliary\\VS\\UnitTest\\include" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt" \
     "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um"
 QMAKE_CXX.LIBDIRS = \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\lib\\x64" \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\atlmfc\\lib\\x64" \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\lib\\x64" \
+    "E:\\Visual Studio\\VC\\Tools\\MSVC\\14.29.30133\\lib\\x64" \
+    "E:\\Visual Studio\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\lib\\x64" \
+    "E:\\Visual Studio\\VC\\Auxiliary\\VS\\lib\\x64" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.19041.0\\ucrt\\x64" \
-    "D:\\Program Files\\Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\lib" \
+    "E:\\Visual Studio\\VC\\Auxiliary\\VS\\UnitTest\\lib" \
     "C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.19041.0\\um\\x64" \
     "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\lib\\um\\x64"

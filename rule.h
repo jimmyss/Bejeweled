@@ -18,14 +18,14 @@ private:
     int searchRight(int i, int j);
     int searchUp(int i, int j);
     int searchDown(int i, int j);
-
-    bool isCanSwap(int i, int j, int a, int b);
-    void adjust();
 public:
     Bejewled();
     ~Bejewled() { }
     void setGraph(int x, int y, int type);
+    int getGraph(int x, int y);
+    void adjust();
     void dispaly();
+    bool isCanSwap(int i, int j, int a, int b);
     void swap(int i, int j, int a, int b);
     bool isOver();
 

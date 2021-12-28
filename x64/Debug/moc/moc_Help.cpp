@@ -1,20 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Help.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.3)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.11)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../../Help.h"
-#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Help.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.1.3. It"
+#elif Q_MOC_OUTPUT_REVISION != 67
+#error "This file was generated using the moc from 5.12.11. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,14 +21,17 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Help_t {
-    const uint offsetsAndSize[2];
+    QByteArrayData data[1];
     char stringdata0[5];
 };
-#define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_Help_t, stringdata0) + ofs), len 
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_Help_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
 static const qt_meta_stringdata_Help_t qt_meta_stringdata_Help = {
     {
-QT_MOC_LITERAL(0, 4) // "Help"
+QT_MOC_LITERAL(0, 0, 4) // "Help"
 
     },
     "Help"
@@ -40,7 +41,7 @@ QT_MOC_LITERAL(0, 4) // "Help"
 static const uint qt_meta_data_Help[] = {
 
  // content:
-       9,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -55,18 +56,17 @@ static const uint qt_meta_data_Help[] = {
 
 void Help::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    (void)_o;
-    (void)_id;
-    (void)_c;
-    (void)_a;
+    Q_UNUSED(_o);
+    Q_UNUSED(_id);
+    Q_UNUSED(_c);
+    Q_UNUSED(_a);
 }
 
-const QMetaObject Help::staticMetaObject = { {
-    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_Help.offsetsAndSize,
+QT_INIT_METAOBJECT const QMetaObject Help::staticMetaObject = { {
+    &QDialog::staticMetaObject,
+    qt_meta_stringdata_Help.data,
     qt_meta_data_Help,
     qt_static_metacall,
-    nullptr,
     nullptr,
     nullptr
 } };

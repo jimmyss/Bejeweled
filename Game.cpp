@@ -15,8 +15,13 @@ Game::Game(QWidget *parent)
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             int rNum = rand() % 7;
-            gems[i][j] = new Gem(rNum, 42, j, i, this);
             rule->setGraph(i, j, rNum);
+            rule->adjust();
+        }
+    }
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            gems[i][j] = new Gem(rule->getGraph(i, j), 42, j, i, this);
             connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ĞÅºÅ0
         }
     }
@@ -84,6 +89,11 @@ void Game::fallAnimation(Gem* gem, int h, int flag) {
         });
 }
 
+void Game::resetGem() {
+    //Ïû³ı·½¿é
+    //Éú³ÉĞÂ·½¿é
+}
+
 void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ½¸ö¿é¿é¶ù´«¸øruleÅĞ¶ÏÊÇ·ñ¿ÉÖ´ĞĞ
     if (gCounter == 0) {
         g1 = qobject_cast<Gem*>(sender());//°ÑĞÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàĞÍ
@@ -91,7 +101,50 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
     }
     else if (gCounter == 1) {
         g2 = qobject_cast<Gem*>(sender());
-        rule->swap(g1->y(), g1->x(), g2->y(), g2->x());
+        int g1x = g1->x(), g1y = g1->y(), g2x = g2->x(), g2y = g2->y();
+        int switchFlag=0;
+        //Èç¹ûÁ½¸ö·½¿é²»¿¿ÔÚÒ»Æğ»òÕßÑ¡µÄÊÇÍ¬Ò»¸ö·½¿é
+        if (abs(g1->y() - g2->y()) + abs(g1->x() - g2->x()) > 1||abs( g1->y() - g2->y()) + abs(g1->x() - g2->x())==0)
+            qDebug() << "cannot swap";
+        //Èç¹ûÁ½¸ö·½¿é¿¿ÔÚÒ»Æğ
+        else {
+            //ÉÏÏÂ»»
+            if (g1->x() == g2->x()) {
+                if (g1->y() > g2->y()) {
+                    fallAnimation(g1, 1, 1);
+                    fallAnimation(g2, 1, 2);
+                    switchFlag = 1;
+                }
+                else {
+                    fallAnimation(g1, 1, 2);
+                    fallAnimation(g2, 1, 1);
+                    switchFlag = 2;
+                }
+            }
+            //×óÓÒ»»
+            else if (g1->y() == g2->y()) {
+                if (g1->x() > g2->x()) {
+                    fallAnimation(g1, 1, 3);
+                    fallAnimation(g2, 1, 4);
+                    switchFlag = 3;
+                }
+                else
+                {
+                    fallAnimation(g1, 1, 4);
+                    fallAnimation(g2, 1, 3);
+                    switchFlag = 4;
+                }
+            }
+        }
+        if (!rule->isCanSwap(g1y, g1x, g2y, g2x)) {//²»ÄÜ½»»»µÄ»»»Ø¶¯»­
+            qDebug() << "swap"<<g1->type()<<","<<g2->type()<<" invalid";
+        }
+        else
+        {
+            rule->swap(g1->y(), g1->x(), g2->y(), g2->x());
+            qDebug() << "swap" << g1->type() << "," << g2->type() << "ok";
+            resetGem();
+        }
         gCounter = 0;
     }
     //fallAnimation(tb, 1,3);

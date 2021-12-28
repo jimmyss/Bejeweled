@@ -28,7 +28,7 @@ public:
         Help->resize(400, 300);
         label = new QLabel(Help);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(230, 110, 201, 111));
+        label->setGeometry(QRect(160, 90, 201, 111));
 
         retranslateUi(Help);
 

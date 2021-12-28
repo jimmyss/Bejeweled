@@ -28,7 +28,7 @@ public:
         Rank->resize(400, 300);
         textEdit = new QTextEdit(Rank);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(130, 120, 104, 87));
+        textEdit->setGeometry(QRect(130, 90, 104, 87));
 
         retranslateUi(Rank);
 
