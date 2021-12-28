@@ -100,7 +100,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
         g1 = qobject_cast<Gem*>(sender());//°ÑĞÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàĞÍ
         gCounter = 1;
     }
-    else if (gCounter == 1) {
+   else if (gCounter == 1) {
         g2 = qobject_cast<Gem*>(sender());
         int g1x = g1->x(), g1y = g1->y(), g2x = g2->x(), g2y = g2->y();
         int switchFlag=0;
@@ -148,6 +148,5 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
         }
         gCounter = 0;
     }
-    //fallAnimation(tb, 1,3);
 }
 

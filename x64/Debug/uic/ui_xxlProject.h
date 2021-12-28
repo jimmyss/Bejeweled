@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'xxlProject.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -76,10 +76,10 @@ public:
 
     void retranslateUi(QMainWindow *XXLProjectClass)
     {
-        XXLProjectClass->setWindowTitle(QApplication::translate("XXLProjectClass", "MainWindow", nullptr));
-        pushButtonStart->setText(QApplication::translate("XXLProjectClass", "\345\274\200\345\247\213", nullptr));
-        pushButtonHelp->setText(QApplication::translate("XXLProjectClass", "\345\270\256\345\212\251", nullptr));
-        pushButtonRank->setText(QApplication::translate("XXLProjectClass", "\346\216\222\350\241\214\346\246\234", nullptr));
+        XXLProjectClass->setWindowTitle(QCoreApplication::translate("XXLProjectClass", "MainWindow", nullptr));
+        pushButtonStart->setText(QCoreApplication::translate("XXLProjectClass", "\345\274\200\345\247\213", nullptr));
+        pushButtonHelp->setText(QCoreApplication::translate("XXLProjectClass", "\345\270\256\345\212\251", nullptr));
+        pushButtonRank->setText(QCoreApplication::translate("XXLProjectClass", "\346\216\222\350\241\214\346\246\234", nullptr));
     } // retranslateUi
 
 };
