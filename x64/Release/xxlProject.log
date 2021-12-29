@@ -1,24 +1,6 @@
-﻿  Reading Qt configuration (F:/Qt/5.12.11/msvc2017_64/bin/qmake)
-  uic Help.ui
-  uic Game.ui
-  uic Rank.ui
-  uic xxlProject.ui
-  rcc xxlProject.qrc
-  moc xxlProject.h
-  moc Gem.h
-  moc Help.h
-   RCC: Warning: No resources in 'E:\绯荤粺榛樿\妗岄潰\xxl-project\xxlProject.qrc'.
-  moc Rank.h
-  moc Game.h
-  DButil.cpp
-  Gem.cpp
-  Help.cpp
-  Game.cpp
-  Rank.cpp
-  rule.cpp
-  xxlProject.cpp
-  main.cpp
-E:\系统默认\桌面\xxl-project\DButil.h(2,10): fatal error C1083: 无法打开包括文件: “QtSql”: No such file or directory (编译源文件 DButil.cpp)
-E:\系统默认\桌面\xxl-project\Game.cpp(35,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
-E:\系统默认\桌面\xxl-project\Game.cpp(35,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
-E:\系统默认\桌面\xxl-project\DButil.h(2,10): fatal error C1083: 无法打开包括文件: “QtSql”: No such file or directory (编译源文件 main.cpp)
+﻿  Game.cpp
+C:\Users\bxy\Desktop\xxlxxl\xxl2.2\Game.cpp(40,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
+C:\Users\bxy\Desktop\xxlxxl\xxl2.2\Game.cpp(40,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
+  moc_Game.cpp
+  moc_xxlProject.cpp
+  xxlProject.vcxproj -> C:\Users\bxy\Desktop\xxlxxl\xxl2.2\x64\Release\xxlProject.exe

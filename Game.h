@@ -9,6 +9,7 @@
 #include<QPalette>
 #include<ctime>
 #include <QPropertyAnimation>
+#include <QSequentialAnimationGroup>
 #include<iostream>
 #include<qdebug.h>
 #include"Gem.h"
@@ -23,7 +24,7 @@ class Game : public QWidget
 public:
 	Game(QWidget *parent = Q_NULLPTR);
 	~Game();
-	void fallAnimation(Gem* gem, int h, int flag);
+	QPropertyAnimation* fallAnimation(Gem* gem, int h, int flag);
 	void resetGem();
 protected:
 	virtual void mousePressEvent(QMouseEvent* event);
