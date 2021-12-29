@@ -27,9 +27,9 @@ public:
     void setGraph(int x, int y, int type);
     int getGraph(int x, int y);
     void adjust(vector<vector<int>> fallM,vector<vector<int>>genM);
-    void fallGem(vector<vector<int>>fallM, vector<vector<int>>genM);
+    void fallGem(vector<vector<int>> &fallM, vector<vector<int>> &genM);
     void dispaly();
-    void showBomb(Gem* gems[10][10]);
+    void showBomb(Gem* gems[10][10],vector<vector<int>> &delM);
     bool isCanSwap(int i, int j, int a, int b);
     void switchGem(int i, int j, int a, int b);
     void swap(int i, int j, int a, int b);

@@ -9,6 +9,7 @@
 #include <QMovie>
 #include <QLabel>
 #include<qicon.h>
+#include<qtimer.h>
 
 class Gem : public QPushButton
 {
@@ -20,6 +21,7 @@ public:
     int y() { return _y; }
     void setY(int n) { _y = n; }
     int type() { return _type; }
+    int num = 8;
     void bomb();
 
 private:
@@ -28,8 +30,8 @@ private:
     int _type;
     int _x, _y;
 
-    QMovie* gif;
-    QLabel* gifLabel;
+private slots:
+    void on_timer_timeout(); //定时溢出处理槽函数
 
 signals:
     void mouseClicked(Gem*);

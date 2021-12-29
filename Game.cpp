@@ -27,6 +27,7 @@ Game::Game(QWidget *parent)
     }
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
     generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
+    deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
 }
 
 Game::~Game()
@@ -97,9 +98,29 @@ void Game::fallAnimation(Gem* gem, int h, int flag) {
 
 void Game::resetGem() {
     //Ïû³ı·½¿é
-    rule->showBomb(gems);
-    //Éú³ÉĞÂ·½¿é
-    rule->fallGem(fallMatrix,generateMatrix);
+    rule->showBomb(gems,deleteMatrix);
+    //ÏÂÂä·½¿é&Éú³É·½¿é
+    rule->fallGem(fallMatrix, generateMatrix);
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (fallMatrix[i][j] != 0 &&deleteMatrix[i][j]!=1) {
+                fallAnimation(gems[i][j], fallMatrix[i][j], 2);
+                //gems[i][j + fallMatrix[i][j]] = gems[i][j];
+            }
+        }
+    }
+
+    //for (int i = 0; i < 10; i++) {
+    //    for (int j = 0; j < 10; j++) {
+    //        if (generateMatrix[i][j] != -1) {
+    //            gems[i][j] = new Gem(generateMatrix[i][j], 42, j, i, this);
+    //            connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ĞÅºÅ0
+    //        }
+    //    }
+    //}
+    fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+    generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
+    deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
 }
 
 void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ½¸ö¿é¿é¶ù´«¸øruleÅĞ¶ÏÊÇ·ñ¿ÉÖ´ĞĞ
@@ -107,7 +128,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
         g1 = qobject_cast<Gem*>(sender());//°ÑĞÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàĞÍ
         gCounter = 1;
     }
-    else if (gCounter == 1) {
+   else if (gCounter == 1) {
         g2 = qobject_cast<Gem*>(sender());
         int g1x = g1->x(), g1y = g1->y(), g2x = g2->x(), g2y = g2->y();
         int switchFlag=0;
@@ -157,10 +178,9 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
             rule->swap(g1y, g1x, g2y, g2x);
             bool endFlag = true;
             resetGem();
-            rule->adjust(fallMatrix,generateMatrix);
+            //rule->adjust(fallMatrix,generateMatrix);
         }
         gCounter = 0;
     }
-    //fallAnimation(tb, 1,3);
 }
 

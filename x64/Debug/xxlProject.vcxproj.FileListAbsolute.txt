@@ -1,3 +1,4 @@
 E:\系统默认\桌面\xxlProject\x64\Debug\xxlProject.exe
 D:\CppProjects\xxl2.2\x64\Debug\xxlProject.exe
+C:\Users\lenovo\Desktop\xxl2.2\x64\Debug\xxlProject.exe
 E:\系统默认\桌面\xxl-project\x64\Debug\xxlProject.exe

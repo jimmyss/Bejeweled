@@ -151,12 +151,13 @@ void Bejewled::dispaly() {
     
 }
 
-void Bejewled::showBomb(Gem* gems[10][10]) {
+void Bejewled::showBomb(Gem* gems[10][10],vector<vector<int>> &delM) {
     int size = bomb.size();
     int x, y;
     for (int k = 0; k < size; k++) {
         x = bomb.front().first;
         y = bomb.front().second;
+        delM[x][y] = 1;
         gems[x][y]->bomb();
         bomb.pop();
     }
@@ -252,17 +253,19 @@ void Bejewled::swap(int i, int j, int a, int b) {
     //}
 }
 
-void Bejewled::fallGem(vector<vector<int>>fallM, vector<vector<int>>genM) {
+void Bejewled::fallGem(vector<vector<int>>& fallM, vector<vector<int>>& genM) {
     // fill the empty place and generate new items
-    for (int i = row - 1; i >= 0; --i) {
+    int height[10] = {0};
+    for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; ++j) {
             if (graph[i][j] == -1) {
+                height[j]++;
                 for (int k = i; k > 0; --k) {
+                    fallM[k - 1][j] = height[j];
                     graph[k][j] = graph[k - 1][j];
-                    if (graph[k][j] != -1)
-                        fallM[k][j] += 1;
                 }
                 graph[0][j] = rand() % 7;
+                genM[height[j] - 1][j] = graph[0][j];
             }
         }
     }

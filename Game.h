@@ -36,6 +36,7 @@ private:
 	int gCounter = 0;//用于记录点了多少次方块，点两次时执行交换
 	vector<vector<int>> fallMatrix;
 	vector<vector<int>> generateMatrix;
+	vector<vector<int>> deleteMatrix;
 	Gem* g1;
 	Gem* g2;//2021-12-21 杜世茂 g1和g2分别表示两个块块儿
 	Gem* gems[10][10];
