@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Rank.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.9)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../../Rank.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Rank.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.14.2. It"
+#error "This file was generated using the moc from 5.12.9. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -64,7 +63,7 @@ void Rank::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
 }
 
 QT_INIT_METAOBJECT const QMetaObject Rank::staticMetaObject = { {
-    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    &QTableView::staticMetaObject,
     qt_meta_stringdata_Rank.data,
     qt_meta_data_Rank,
     qt_static_metacall,
@@ -83,12 +82,12 @@ void *Rank::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_Rank.stringdata0))
         return static_cast<void*>(this);
-    return QDialog::qt_metacast(_clname);
+    return QTableView::qt_metacast(_clname);
 }
 
 int Rank::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QDialog::qt_metacall(_c, _id, _a);
+    _id = QTableView::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

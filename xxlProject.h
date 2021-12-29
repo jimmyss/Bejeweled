@@ -1,5 +1,11 @@
 #pragma once
 
+//播放音乐需要
+#include<windows.h>
+#include<Mmsystem.h>
+#pragma comment(lib,"winmm.lib")
+
+//界面
 #include <QtWidgets/QMainWindow>
 #include "ui_xxlProject.h"
 #include "Game.h"

@@ -103,8 +103,10 @@ int DButil::updateRank(QString name, int rank)
 		return 1;
 }
 
+
 void DButil::showInfo()
 {
+
 }
 
 

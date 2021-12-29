@@ -1,4 +1,5 @@
-﻿  Game.cpp
-C:\Users\lenovo\Desktop\xxl2.2\Game.cpp(40,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
-C:\Users\lenovo\Desktop\xxl2.2\Game.cpp(40,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
-  xxlProject.vcxproj -> C:\Users\lenovo\Desktop\xxl2.2\x64\Debug\xxlProject.exe
+﻿  moc Rank.h
+  Rank.cpp
+  xxlProject.cpp
+  moc_Rank.cpp
+  xxlProject.vcxproj -> D:\AA-programAssignment\pracicalTraining\week5_happy\xxl2.2-master\xxl2.2-bai\xxl2.2\x64\Debug\xxlProject.exe

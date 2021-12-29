@@ -6,11 +6,14 @@
 xxlProject::xxlProject(QWidget *parent)
     : QMainWindow(parent)
 {
+    // ²¥·ÅÒôÀÖ
+    PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
     ui.setupUi(this);
 }
 void xxlProject::on_pushButtonRank_clicked() {
     Rank* rank = new Rank();
-    rank->exec();
+    //rank->exec();
 }
 void xxlProject::on_pushButtonHelp_clicked() {
     Help* help = new Help();
