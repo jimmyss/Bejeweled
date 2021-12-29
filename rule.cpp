@@ -159,6 +159,7 @@ void Bejewled::showBomb(Gem* gems[10][10],vector<vector<int>> &delM) {
         y = bomb.front().second;
         delM[x][y] = 1;
         gems[x][y]->bomb();
+        gems[x][y] = NULL;
         bomb.pop();
     }
 }

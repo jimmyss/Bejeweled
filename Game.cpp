@@ -64,7 +64,7 @@ void Game::setGems(int x, int y, int type) {
     gems[x][y]=new Gem(rule->getGraph(x, y), 42, y, x, this);
 }
 
-void Game::fallAnimation(Gem* gem, int h, int flag) {
+QPropertyAnimation* Game::fallAnimation(Gem* gem, int h, int flag) {
     QPropertyAnimation* animation = new QPropertyAnimation(gem, "geometry", this);
     animation->setDuration(500);
     animation->setStartValue(gem->geometry());
@@ -73,27 +73,32 @@ void Game::fallAnimation(Gem* gem, int h, int flag) {
         //ÉÏ
     case 1:
         animation->setEndValue(QRect(gem->geometry().x(), gem->geometry().y() - 42 * h, gem->width(), gem->height()));
+        gem->setGeometry(gem->geometry().x(), gem->geometry().y() - 42 * h, gem->width(), gem->height());
         break;
         //ÏÂ
     case 2:
         animation->setEndValue(QRect(gem->geometry().x(), gem->geometry().y() + 42 * h, gem->width(), gem->height()));
+        gem->setGeometry(gem->geometry().x(), gem->geometry().y() + 42 * h, gem->width(), gem->height());
         break;
         //×ó
     case 3:
         animation->setEndValue(QRect(gem->geometry().x() - 42 * h, gem->geometry().y(), gem->width(), gem->height()));
+        gem->setGeometry(gem->geometry().x() - 42 * h, gem->geometry().y(), gem->width(), gem->height());
         break;
         //ÓÒ
     case 4:
         animation->setEndValue(QRect(gem->geometry().x() + 42 * h, gem->geometry().y(), gem->width(), gem->height()));
+        gem->setGeometry(gem->geometry().x() + 42 * h, gem->geometry().y(), gem->width(), gem->height());
         break;
     default:
         break;
     }
     animation->setEasingCurve(QEasingCurve::InQuad);
-    animation->start();
-    QTimer::singleShot(1000, this, [=]() {
+    //animation->start();
+    /*QTimer::singleShot(1000, this, [=]() {
         delete animation;
-        });
+        });*/
+    return animation;
 }
 
 void Game::resetGem() {
@@ -104,7 +109,8 @@ void Game::resetGem() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             if (fallMatrix[i][j] != 0 &&deleteMatrix[i][j]!=1) {
-                fallAnimation(gems[i][j], fallMatrix[i][j], 2);
+                QPropertyAnimation* ani = fallAnimation(gems[i][j], fallMatrix[i][j], 2);
+                ani->start();
                 //gems[i][j + fallMatrix[i][j]] = gems[i][j];
             }
         }
@@ -124,6 +130,13 @@ void Game::resetGem() {
 }
 
 void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ½¸ö¿é¿é¶ù´«¸øruleÅÐ¶ÏÊÇ·ñ¿ÉÖ´ÐÐ
+    QSequentialAnimationGroup* seqAniGroup1 = new QSequentialAnimationGroup;
+    QSequentialAnimationGroup* seqAniGroup2 = new QSequentialAnimationGroup;
+    QPropertyAnimation* ani1 = new QPropertyAnimation;
+    QPropertyAnimation* ani2 = new QPropertyAnimation;
+    QPropertyAnimation* ani3 = new QPropertyAnimation;
+    QPropertyAnimation* ani4 = new QPropertyAnimation;
+
     if (gCounter == 0) {
         g1 = qobject_cast<Gem*>(sender());//°ÑÐÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàÐÍ
         gCounter = 1;
@@ -140,36 +153,71 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
             //ÉÏÏÂ»»
             if (g1->x() == g2->x()) {
                 if (g1->y() > g2->y()) {
-                    fallAnimation(g1, 1, 1);
-                    fallAnimation(g2, 1, 2);
+                    ani1 = fallAnimation(g1, 1, 1);
+                    ani2 = fallAnimation(g2, 1, 2);
                     switchFlag = 1;
                 }
                 else {
-                    fallAnimation(g1, 1, 2);
-                    fallAnimation(g2, 1, 1);
+                    ani1 = fallAnimation(g1, 1, 2);
+                    ani2 = fallAnimation(g2, 1, 1);
                     switchFlag = 2;
                 }
             }
             //×óÓÒ»»
             else if (g1->y() == g2->y()) {
                 if (g1->x() > g2->x()) {
-                    fallAnimation(g1, 1, 3);
-                    fallAnimation(g2, 1, 4);
+                    ani1 = fallAnimation(g1, 1, 3);
+                    ani2 = fallAnimation(g2, 1, 4);
                     switchFlag = 3;
                 }
                 else
                 {
-                    fallAnimation(g1, 1, 4);
-                    fallAnimation(g2, 1, 3);
+                    ani1 = fallAnimation(g1, 1, 4);
+                    ani2 = fallAnimation(g2, 1, 3);
                     switchFlag = 4;
                 }
             }
+            seqAniGroup1->addAnimation(ani1);
+            seqAniGroup2->addAnimation(ani2);
         }
         if (!rule->isCanSwap(g1y, g1x, g2y, g2x)) {//²»ÄÜ½»»»µÄ»»»Ø¶¯»­
             qDebug() << "swap"<<g1->type()<<","<<g2->type()<<" invalid";
+            switch (switchFlag)
+            {
+                //ÉÏ
+            case 1:
+                ani3 = fallAnimation(g1, 1, 2);
+                ani4 = fallAnimation(g2, 1, 1);
+                break;
+                //ÏÂ
+            case 2:
+                ani3 = fallAnimation(g1, 1, 1);
+                ani4 = fallAnimation(g2, 1, 2);
+                break;
+                //×ó
+            case 3:
+                ani3 = fallAnimation(g1, 1, 4);
+                ani4 = fallAnimation(g2, 1, 3);
+                break;
+                //ÓÒ
+            case 4:
+                ani3 = fallAnimation(g1, 1, 3);
+                ani4 = fallAnimation(g2, 1, 4);
+                break;
+            default:
+                break;
+            }
+            seqAniGroup1->addPause(100);
+            seqAniGroup2->addPause(100);
+            seqAniGroup1->addAnimation(ani3);
+            seqAniGroup2->addAnimation(ani4);
+            seqAniGroup1->start();
+            seqAniGroup2->start();
         }
         else
         {
+            seqAniGroup1->start();
+            seqAniGroup2->start();
             Gem* temp;
             temp = gems[g1y][g1x];
             gems[g1y][g1x] = gems[g2y][g2x];
@@ -180,6 +228,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
             resetGem();
             //rule->adjust(fallMatrix,generateMatrix);
         }
+       
         gCounter = 0;
     }
 }
