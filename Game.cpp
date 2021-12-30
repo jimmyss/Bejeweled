@@ -12,11 +12,15 @@ Game::Game(QWidget *parent)
     pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/background.png")));
     setPalette(pal);
     srand((int)time(0));
+    bool flag = true;
+    fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+    generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
+    deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             int rNum = rand() % 7;
             rule->setGraph(i, j, rNum);
-            rule->adjust(fallMatrix,generateMatrix);
+            rule->adjust(fallMatrix,generateMatrix,flag);
         }
     }
     for (int i = 0; i < 10; i++) {
@@ -25,6 +29,7 @@ Game::Game(QWidget *parent)
             connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ÐÅºÅ0
         }
     }
+    rule->clearBomb();
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
     generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
     deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
@@ -101,29 +106,48 @@ QPropertyAnimation* Game::fallAnimation(Gem* gem, int h, int flag) {
     return animation;
 }
 
-void Game::resetGem() {
+void Game::resetGem(int g1y, int g1x, int g2y, int g2x) {
     //Ïû³ý·½¿é
     rule->showBomb(gems,deleteMatrix);
     //ÏÂÂä·½¿é&Éú³É·½¿é
     rule->fallGem(fallMatrix, generateMatrix);
-    for (int i = 0; i < 10; i++) {
+    /*if (gems[g1y][g1x] == NULL) {
+        gems[g2y][g2x]->setY(g2y);
+        gems[g2y][g2x]->setX(g2x);
+    }
+    else {
+        gems[g1y][g1x]->setX(g1x);
+        gems[g1y][g1x]->setY(g1y);
+    }*/
+    for (int i = 9; i >= 0; i--) {
         for (int j = 0; j < 10; j++) {
             if (fallMatrix[i][j] != 0 &&deleteMatrix[i][j]!=1) {
                 QPropertyAnimation* ani = fallAnimation(gems[i][j], fallMatrix[i][j], 2);
                 ani->start();
-                //gems[i][j + fallMatrix[i][j]] = gems[i][j];
+                gems[i + fallMatrix[i][j]][j] = gems[i][j];
+                gems[i][j] = NULL;
+                gems[i + fallMatrix[i][j]][j]->setX(j);
+                gems[i + fallMatrix[i][j]][j]->setY(i + fallMatrix[i][j]);
             }
         }
     }
-
-    //for (int i = 0; i < 10; i++) {
-    //    for (int j = 0; j < 10; j++) {
-    //        if (generateMatrix[i][j] != -1) {
-    //            gems[i][j] = new Gem(generateMatrix[i][j], 42, j, i, this);
-    //            connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ÐÅºÅ0
-    //        }
-    //    }
-    //}
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (generateMatrix[i][j] != -1) {
+                gems[i][j] = new Gem(generateMatrix[i][j], 42, j, i, this);
+                connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ÐÅºÅ0
+            }
+        }
+    }
+    /*qDebug() << "after";
+    rule->dispaly();
+    qDebug() << "okok";
+    for (int m = 0; m < 10; m++) {
+        for (int n = 0; n < 10; n++) {
+            qDebug() << gems[m][n]->type();
+        }
+        qDebug() << "";
+    }*/
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
     generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
     deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
@@ -222,13 +246,25 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
             temp = gems[g1y][g1x];
             gems[g1y][g1x] = gems[g2y][g2x];
             gems[g2y][g2x] = temp;
+            gems[g1y][g1x]->setX(g1x);
+            gems[g1y][g1x]->setY(g1y);
+            gems[g2y][g2x]->setX(g2x);
+            gems[g2y][g2x]->setY(g2y);
             rule->switchGem(g1y, g1x, g2y, g2x);
             rule->swap(g1y, g1x, g2y, g2x);
+
             bool endFlag = true;
-            resetGem();
-            //rule->adjust(fallMatrix,generateMatrix);
+            while (true) {
+                resetGem(g1y, g1x, g2y, g2x);
+                rule->adjust(fallMatrix, generateMatrix, endFlag);
+                if (endFlag) break;
+                else endFlag = true;
+            }
+            fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+            generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
+            deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
         }
-       
+        
         gCounter = 0;
     }
 }

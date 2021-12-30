@@ -252,6 +252,7 @@ void Bejewled::swap(int i, int j, int a, int b) {
     //        }
     //    }
     //}
+    dispaly();
 }
 
 void Bejewled::fallGem(vector<vector<int>>& fallM, vector<vector<int>>& genM) {
@@ -266,16 +267,23 @@ void Bejewled::fallGem(vector<vector<int>>& fallM, vector<vector<int>>& genM) {
                     graph[k][j] = graph[k - 1][j];
                 }
                 graph[0][j] = rand() % 7;
-                genM[height[j] - 1][j] = graph[0][j];
+            }
+        }
+    }
+    for (int h = 0; h < col; h++) {
+        if (height[h] != 0) {
+            for (int n = 0; n < height[h]; n++) {
+                genM[n][h] = graph[n][h];
             }
         }
     }
 }
 // ajust the graph to avoid left 3-item cases
-void Bejewled::adjust(vector<vector<int>>fallM,vector<vector<int>>genM) {
+void Bejewled::adjust(vector<vector<int>> &fallM,vector<vector<int>> &genM,bool &endFlag) {
     int tmp;
     int target;
     int left, right, up, down;
+    pair<int, int> pos;
     bool isEnd = true;
 
     while (true)
@@ -289,35 +297,49 @@ void Bejewled::adjust(vector<vector<int>>fallM,vector<vector<int>>genM) {
                 down=searchDown(i + 1, j);
                 if (up + down > 1) {
                     isEnd = false;
-                    for (tmp = i; tmp >= i-up; --tmp) {
-                        if (graph[tmp][j] == target)
+                    endFlag = false;
+                    bomb.push(pos = make_pair(i, j));
+                    for (tmp = i-1; tmp >= i-up; --tmp) {
                             graph[tmp][j] = -1;
+                            bomb.push(pos = make_pair(tmp, j));
                     }
-                    for (tmp = i; tmp <= i+down; ++tmp) {
-                        if (graph[tmp][j] == target)
+                    for (tmp = i+1; tmp <= i+down; ++tmp) {
                             graph[tmp][j] = -1;
+                            bomb.push(pos = make_pair(tmp, j));
                     }
                 }
                 left = searchLeft(i, j - 1);
                 right = searchRight(i, j + 1);
                 if (left + right > 1) {
                     isEnd = false;
-                    for (tmp = j; tmp >= j-left; --tmp) {
-                        if (graph[i][tmp] == target)
+                    endFlag = false;
+                    bomb.push(pos = make_pair(i, j));
+                    for (tmp = j-1; tmp >= j-left; --tmp) {
                             graph[i][tmp] = -1;
+                            bomb.push(pos = make_pair(i, tmp));
                     }
-                    for (tmp = j; tmp <= j+right; ++tmp) {
-                        if (graph[i][tmp] == target)
+                    for (tmp = j+1; tmp <= j+right; ++tmp) {
                             graph[i][tmp] = -1;
+                            bomb.push(pos = make_pair(i, tmp));
                     }
                 }
-                for (int i = row - 1; i >= 0; --i) {
-                    for (int j = 0; j < col; ++j) {
-                        if (graph[i][j] == -1) {
-                            for (int k = i; k > 0; --k) {
-                                graph[k][j] = graph[k - 1][j];
+                int height[10] = {0};
+                for (int m = 0; m < row; m++) {
+                    for (int n = 0; n < col; n++) {
+                        if (graph[m][n] == -1) {
+                            height[n]++;
+                            for (int p = m; p > 0; --p) {
+                                fallM[p - 1][n] = height[n];
+                                graph[p][n] = graph[p - 1][n];
                             }
-                            graph[0][j] = rand() % 7;
+                            graph[0][n] = rand() % 7;
+                        }
+                    }
+                }
+                for (int h = 0; h < col; h++) {
+                    if (height[h] != 0) {
+                        for (int n = 0; n < height[h]; n++) {
+                            genM[n][h] = graph[n][h];
                         }
                     }
                 }
@@ -328,7 +350,13 @@ void Bejewled::adjust(vector<vector<int>>fallM,vector<vector<int>>genM) {
         else break;
 
     }
+    
+}
 
+void Bejewled::clearBomb() {
+    while (bomb.size() > 0) {
+        bomb.pop();
+    }
 }
 
 bool Bejewled::isOver() {

@@ -26,7 +26,7 @@ public:
 	~Game();
 	QPropertyAnimation* fallAnimation(Gem* gem, int h, int flag);
 	void setGems(int x,int y,int type);
-	void resetGem();
+	void resetGem(int g1y, int g1x, int g2y, int g2x);
 protected:
 	virtual void mousePressEvent(QMouseEvent* event);
 

@@ -20,6 +20,7 @@ public:
     int x() { return _x; }
     int y() { return _y; }
     void setY(int n) { _y = n; }
+    void setX(int n) { _x = n; }
     int type() { return _type; }
     int num = 8;
     void bomb();
