@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Rank.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -38,7 +38,7 @@ public:
 
     void retranslateUi(QWidget *Rank)
     {
-        Rank->setWindowTitle(QApplication::translate("Rank", "QtWidgetsClass", nullptr));
+        Rank->setWindowTitle(QCoreApplication::translate("Rank", "QtWidgetsClass", nullptr));
     } // retranslateUi
 
 };

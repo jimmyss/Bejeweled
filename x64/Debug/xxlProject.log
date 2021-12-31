@@ -1,5 +1,26 @@
-﻿  moc Log.h
+﻿  Reading Qt configuration (D:/Qt/6.1.3/msvc2019_64/bin/qmake)
+  moc xxlProject.h
+  moc Gem.h
+  moc Help.h
+  moc Rank.h
+  moc Game.h
+  moc Log.h
+  DButil.cpp
+  Gem.cpp
+  Help.cpp
+  Game.cpp
   Log.cpp
+  Rank.cpp
+  rule.cpp
+  xxlProject.cpp
   main.cpp
+D:\CppProjects\xxl2.2\Game.cpp(51,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
+D:\CppProjects\xxl2.2\Game.cpp(51,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
+  qrc_xxlProject.cpp
+  moc_xxlProject.cpp
+  moc_Gem.cpp
+  moc_Help.cpp
+  moc_Rank.cpp
+  moc_Game.cpp
   moc_Log.cpp
-  xxlProject.vcxproj -> E:\系统默认\桌面\xxl-project\x64\Debug\xxlProject.exe
+  xxlProject.vcxproj -> D:\CppProjects\xxl2.2\x64\Debug\xxlProject.exe

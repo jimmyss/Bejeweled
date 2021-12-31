@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Help.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -34,7 +34,6 @@ public:
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
-        font.setWeight(75);
         label->setFont(font);
         helpText = new QTextBrowser(Help);
         helpText->setObjectName(QString::fromUtf8("helpText"));
@@ -47,9 +46,9 @@ public:
 
     void retranslateUi(QWidget *Help)
     {
-        Help->setWindowTitle(QApplication::translate("Help", "QtWidgetsClass", nullptr));
-        label->setText(QApplication::translate("Help", "\345\270\256\345\212\251", nullptr));
-        helpText->setHtml(QApplication::translate("Help", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        Help->setWindowTitle(QCoreApplication::translate("Help", "QtWidgetsClass", nullptr));
+        label->setText(QCoreApplication::translate("Help", "\345\270\256\345\212\251", nullptr));
+        helpText->setHtml(QCoreApplication::translate("Help", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
