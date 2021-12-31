@@ -166,9 +166,10 @@ void Bejewled::dispaly() {
     }
 }
 
-QParallelAnimationGroup* Bejewled::showBomb(Gem* gems[10][10], vector<vector<int>>& delM) {
+QParallelAnimationGroup* Bejewled::showBomb(Gem* gems[10][10], vector<vector<int>>& delM, int& roundNumber) {
     QParallelAnimationGroup* bombGroup = new QParallelAnimationGroup;
     int size = bomb.size();
+    roundNumber += size;
     int x, y;
     for (int k = 0; k < size; k++) {
         x = bomb.front().first;

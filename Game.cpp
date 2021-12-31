@@ -33,6 +33,7 @@ Game::Game(QWidget* parent)
 
     srand((int)time(0));
     bool flag = true;
+    roundNumber = 0;
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
     generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
     deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
@@ -141,7 +142,7 @@ void Game::switchBlock() {
 
 QParallelAnimationGroup* Game::clearBlock() {
     QParallelAnimationGroup* bomb;
-    bomb = rule->showBomb(gems, deleteMatrix);
+    bomb = rule->showBomb(gems, deleteMatrix,roundNumber);
     rule->fallGem(fallMatrix, generateMatrix);
     return bomb;
 }
@@ -175,53 +176,6 @@ void Game::generatGems() {
 
 
 void Game::resetBlock() {
-    fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
-    generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
-    deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
-}
-
-void Game::resetGem(int g1y, int g1x, int g2y, int g2x) {
-    //Ïû³ý·½¿é
-    rule->showBomb(gems, deleteMatrix);
-    //ÏÂÂä·½¿é&Éú³É·½¿é
-    rule->fallGem(fallMatrix, generateMatrix);
-    /*if (gems[g1y][g1x] == NULL) {
-        gems[g2y][g2x]->setY(g2y);
-        gems[g2y][g2x]->setX(g2x);
-    }
-    else {
-        gems[g1y][g1x]->setX(g1x);
-        gems[g1y][g1x]->setY(g1y);
-    }*/
-    for (int i = 9; i >= 0; i--) {
-        for (int j = 0; j < 10; j++) {
-            if (fallMatrix[i][j] != 0 && deleteMatrix[i][j] != 1) {
-                QPropertyAnimation* ani = fallAnimation(gems[i][j], fallMatrix[i][j], 2);
-                ani->start();
-                gems[i + fallMatrix[i][j]][j] = gems[i][j];
-                gems[i][j] = NULL;
-                gems[i + fallMatrix[i][j]][j]->setX(j);
-                gems[i + fallMatrix[i][j]][j]->setY(i + fallMatrix[i][j]);
-            }
-        }
-    }
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            if (generateMatrix[i][j] != -1) {
-                gems[i][j] = new Gem(generateMatrix[i][j], 42, j, i, this);
-                connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ÐÅºÅ0
-            }
-        }
-    }
-    /*qDebug() << "after";
-    rule->dispaly();
-    qDebug() << "okok";
-    for (int m = 0; m < 10; m++) {
-        for (int n = 0; n < 10; n++) {
-            qDebug() << gems[m][n]->type();
-        }
-        qDebug() << "";
-    }*/
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
     generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
     deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
@@ -316,11 +270,10 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
         {
             seqAniGroup1->start();
             seqAniGroup2->start();
-            endFlag = true;
+            endFlag = false;
             switchBlock();//ÏÈ½»»»Á½¸ö·½¿é
             check = false;
-            while (true) {
-                if (check) rule->check(endFlag);
+            
                 QParallelAnimationGroup* bombAni = clearBlock();//Ö´ÐÐÏû³ý·½¿é²Ù×÷
                 connect(bombAni, &QParallelAnimationGroup::finished, [=] {
                     for (int i = 0; i < 10; i++) {
@@ -336,22 +289,102 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
                     connect(fallAni, &QParallelAnimationGroup::finished, [=] {
                         generatGems();
                         resetBlock();//ÖØÖÃÈý¸ö¾ØÕóµÄÖµ
-                        if (endFlag) {
-                            qDebug() << "end";
-                            endFlag = true;
-                            check = false;
-                        }
-                        else {
-                            qDebug() << "not end";
-                            endFlag = false;
-                            check = true;
+                        rule->check(endFlag);
+                        if (!endFlag) {
+                            QParallelAnimationGroup* bombAni = clearBlock();//Ö´ÐÐÏû³ý·½¿é²Ù×÷
+                            connect(bombAni, &QParallelAnimationGroup::finished, [=] {
+                                for (int i = 0; i < 10; i++) {
+                                    for (int j = 0; j < 10; j++) {
+                                        if (deleteMatrix[i][j] == 1) {
+                                            endFlag = false;
+                                            gems[i][j]->deleteBlock();
+                                            gems[i][j] = NULL;
+                                        }
+                                    }
+                                }
+                                QParallelAnimationGroup* fallAni = fallBlock();//Ö´ÐÐ·½¿éÏÂÂä²Ù×÷
+                                connect(fallAni, &QParallelAnimationGroup::finished, [=] {
+                                    generatGems();
+                                    resetBlock();//ÖØÖÃÈý¸ö¾ØÕóµÄÖµ
+                                    rule->check(endFlag);
+                                    if (!endFlag) {
+                                        QParallelAnimationGroup* bombAni = clearBlock();//Ö´ÐÐÏû³ý·½¿é²Ù×÷
+                                        connect(bombAni, &QParallelAnimationGroup::finished, [=] {
+                                            for (int i = 0; i < 10; i++) {
+                                                for (int j = 0; j < 10; j++) {
+                                                    if (deleteMatrix[i][j] == 1) {
+                                                        endFlag = false;
+                                                        gems[i][j]->deleteBlock();
+                                                        gems[i][j] = NULL;
+                                                    }
+                                                }
+                                            }
+                                            QParallelAnimationGroup* fallAni = fallBlock();//Ö´ÐÐ·½¿éÏÂÂä²Ù×÷
+                                            connect(fallAni, &QParallelAnimationGroup::finished, [=] {
+                                                generatGems();
+                                                resetBlock();//ÖØÖÃÈý¸ö¾ØÕóµÄÖµ
+                                                rule->check(endFlag);
+                                                if (!endFlag) {
+                                                    QParallelAnimationGroup* bombAni = clearBlock();//Ö´ÐÐÏû³ý·½¿é²Ù×÷
+                                                    connect(bombAni, &QParallelAnimationGroup::finished, [=] {
+                                                        for (int i = 0; i < 10; i++) {
+                                                            for (int j = 0; j < 10; j++) {
+                                                                if (deleteMatrix[i][j] == 1) {
+                                                                    endFlag = false;
+                                                                    gems[i][j]->deleteBlock();
+                                                                    gems[i][j] = NULL;
+                                                                }
+                                                            }
+                                                        }
+                                                        QParallelAnimationGroup* fallAni = fallBlock();//Ö´ÐÐ·½¿éÏÂÂä²Ù×÷
+                                                        connect(fallAni, &QParallelAnimationGroup::finished, [=] {
+                                                            generatGems();
+                                                            resetBlock();//ÖØÖÃÈý¸ö¾ØÕóµÄÖµ
+                                                            rule->check(endFlag);
+                                                            if (!endFlag) {
+                                                                QParallelAnimationGroup* bombAni = clearBlock();//Ö´ÐÐÏû³ý·½¿é²Ù×÷
+                                                                connect(bombAni, &QParallelAnimationGroup::finished, [=] {
+                                                                    for (int i = 0; i < 10; i++) {
+                                                                        for (int j = 0; j < 10; j++) {
+                                                                            if (deleteMatrix[i][j] == 1) {
+                                                                                endFlag = false;
+                                                                                gems[i][j]->deleteBlock();
+                                                                                gems[i][j] = NULL;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    QParallelAnimationGroup* fallAni = fallBlock();//Ö´ÐÐ·½¿éÏÂÂä²Ù×÷
+                                                                    connect(fallAni, &QParallelAnimationGroup::finished, [=] {
+                                                                        generatGems();
+                                                                        resetBlock();//ÖØÖÃÈý¸ö¾ØÕóµÄÖµ
+                                                                        rule->check(endFlag);
+                                                                        /*if (!endFlag) {
+
+                                                                        }*/
+                                                                        });
+                                                                    fallAni->start();
+                                                                    });
+                                                                bombAni->start();
+                                                            }
+                                                            });
+                                                        fallAni->start();
+                                                        });
+                                                    bombAni->start();
+                                                }
+                                                });
+                                            fallAni->start();
+                                            });
+                                        bombAni->start();
+                                    }
+                                    });
+                                fallAni->start();
+                                });
+                            bombAni->start();
                         }
                         });
                     fallAni->start();
                     });
                 bombAni->start();
-                if (endFlag) break;
-            }
         }
 
         gCounter = 0;
@@ -361,6 +394,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
 void Game::on_pushButtonFinish_clicked()
 {
     QMessageBox message(QMessageBox::NoIcon, "Tip", "Back successfully ");
+    qDebug() << "your score: " << roundNumber;
     message.exec();
     emit backSignal();
     //this->close();//±¾´°¿ÚÒþ²Ø
