@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Log.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.11
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -76,11 +76,11 @@ public:
 
     void retranslateUi(QWidget *Log)
     {
-        Log->setWindowTitle(QApplication::translate("Log", "Log In", nullptr));
-        labelPassword->setText(QApplication::translate("Log", "\345\257\206\347\240\201", nullptr));
-        pushButtonLog->setText(QApplication::translate("Log", "\347\231\273\345\275\225", nullptr));
-        pushButtonReg->setText(QApplication::translate("Log", "\346\263\250\345\206\214", nullptr));
-        labelName->setText(QApplication::translate("Log", "\347\224\250\346\210\267\345\220\215", nullptr));
+        Log->setWindowTitle(QCoreApplication::translate("Log", "Log In", nullptr));
+        labelPassword->setText(QCoreApplication::translate("Log", "\345\257\206\347\240\201", nullptr));
+        pushButtonLog->setText(QCoreApplication::translate("Log", "\347\231\273\345\275\225", nullptr));
+        pushButtonReg->setText(QCoreApplication::translate("Log", "\346\263\250\345\206\214", nullptr));
+        labelName->setText(QCoreApplication::translate("Log", "\347\224\250\346\210\267\345\220\215", nullptr));
     } // retranslateUi
 
 };

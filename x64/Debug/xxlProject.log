@@ -1,1 +1,15 @@
-﻿  xxlProject.vcxproj -> E:\系统默认\桌面\xxlDSM\xxl2.2\x64\Debug\xxlProject.exe
+﻿  Gem.cpp
+C:\Users\lenovo\Desktop\xxl2.2\Gem.cpp(57,31): error C2679: 二元“[”: 没有找到接受“overloaded-function”类型的右操作数的运算符(或没有可接受的转换)
+E:\QT\5.14.2\msvc2017_64\include\QtCore\qmap.h(381,13): message : 可能是“const T QMap<int,T>::operator [](const Key &) const”
+          with
+          [
+              T=QString,
+              Key=int
+          ]
+E:\QT\5.14.2\msvc2017_64\include\QtCore\qmap.h(380,8): message : 或    “T &QMap<int,T>::operator [](const Key &)”
+          with
+          [
+              T=QString,
+              Key=int
+          ]
+C:\Users\lenovo\Desktop\xxl2.2\Gem.cpp(57,31): message : 尝试匹配参数列表“(QMap<int,QString>, overloaded-function)”时

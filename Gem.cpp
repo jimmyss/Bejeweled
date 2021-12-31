@@ -5,6 +5,7 @@ Gem::Gem(int type, int len, int x, int y, QWidget* parent, int offset) : QPushBu
 {
     initGemPath();
     setGeometry(len * x + 20, len * y + 55, len, len);
+   
     setIcon(QIcon(gemPath[type]));
     setIconSize(QSize(len, len));
     //setFlat(true);
@@ -14,29 +15,35 @@ Gem::Gem(int type, int len, int x, int y, QWidget* parent, int offset) : QPushBu
 
     connect(this, &Gem::clicked, [=](bool) {
         this->mouseClicked(this);
+        setIcon(QIcon(gemPath[type+8]));
         });
 }
 
 
-void Gem::initGemPath() {
-    gemPath[0] = "pictures/blk1.bmp";
-    gemPath[1] = "pictures/blk2.bmp";
-    gemPath[2] = "pictures/blk3.bmp";
-    gemPath[3] = "pictures/blk4.bmp";
-    gemPath[4] = "pictures/blk5.bmp";
-    gemPath[5] = "pictures/blk6.bmp";
-    gemPath[6] = "pictures/blk7.bmp";
-    gemPath[7] = "pictures/blk1.bmp";
 
-    /* gemPath[8] = "pictures/explode1.png";
-     gemPath[9] = "pictures/explode2.png";
-     gemPath[10] = "pictures/explode3.png";
-     gemPath[11] = "pictures/explode4.png";
-     gemPath[12] = "pictures/explode5.png";
-     gemPath[13] = "pictures/explode6.png";
-     gemPath[14] = "pictures/explode7.png";*/
+void Gem::initGemPath() {
+    gemPath[0] = "pictures/blk1.jpg";
+    gemPath[1] = "pictures/blk2.jpg";
+    gemPath[2] = "pictures/blk3.jpg";
+    gemPath[3] = "pictures/blk4.jpg";
+    gemPath[4] = "pictures/blk5.jpg";
+    gemPath[5] = "pictures/blk6.jpg";
+    gemPath[6] = "pictures/blk7.jpg";
+
+    gemPath[8] = "pictures/1blk1.jpg";
+    gemPath[9] = "pictures/1blk2.jpg";
+    gemPath[10] = "pictures/1blk3.jpg";
+    gemPath[11] = "pictures/1blk4.jpg";
+    gemPath[12] = "pictures/1blk5.jpg";
+    gemPath[13] = "pictures/1blk6.jpg";
+    gemPath[14] = "pictures/1blk7.jpg";
+
 
 }
+
+
+
+
 
 QPropertyAnimation* Gem::bomb() {
     /*QTimer* timer1 = new QTimer(this);

@@ -11,7 +11,10 @@
 #include <QPropertyAnimation>
 #include<qicon.h>
 #include<qtimer.h>
-
+//≤•∑≈“Ù¿÷–Ë“™
+#include<windows.h>
+#include<Mmsystem.h>
+#pragma comment(lib,"winmm.lib")
 class Gem : public QPushButton
 {
     Q_OBJECT

@@ -107,6 +107,25 @@ int DButil::updateRank(QString name, int rank)
 
 	QSqlQuery sql_query;
 	QString update_sql = "update player set rank = :rank where name = :name";
+	QString select_sql = "select rank from player where name = ?";
+
+	int historyRank;
+
+	sql_query.prepare(select_sql);
+	sql_query.addBindValue(name);
+
+	if (!sql_query.exec()) {
+		qDebug() << sql_query.lastError();
+		return -1;
+	}
+	else {
+		if (sql_query.next()) {
+			historyRank = sql_query.value(0).toInt();
+		}
+	}
+
+	rank = rank > historyRank ? rank : historyRank;
+
 	sql_query.prepare(update_sql);
 	sql_query.bindValue(":rank", rank);
 	sql_query.bindValue(":name", name);

@@ -16,9 +16,12 @@ Starter::Starter(QWidget *parent)
     connect(rank, SIGNAL(backToMain()), this, SLOT(afterRank()));
     connect(help, SIGNAL(backToMain()), this, SLOT(afterHelp()));
     connect(log, SIGNAL(toStarter()), this, SLOT(afterLog()));
+  
+     
+
 
     // ²¥·ÅÒôÀÖ
-    //PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
     //ÉèÖÃÆ¤·ô
     QPalette PAllbackground = this->palette();
@@ -60,6 +63,7 @@ void Starter::on_pushButtonHelp_clicked() {
 }
 
 void Starter::on_pushButtonStart_clicked() {
+    PlaySound(NULL, NULL, NULL);
     game = new Game();
     connect(game, SIGNAL(backSignal()), this, SLOT(backShow()));
     this->hide();
@@ -68,6 +72,7 @@ void Starter::on_pushButtonStart_clicked() {
 
 void Starter::backShow()
 {
+    PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
     this->show();
     game->close();
 }

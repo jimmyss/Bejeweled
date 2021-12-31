@@ -228,6 +228,7 @@ void Game::resetGem(int g1y, int g1x, int g2y, int g2x) {
 }
 
 void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ½¸ö¿é¿é¶ù´«¸øruleÅĞ¶ÏÊÇ·ñ¿ÉÖ´ĞĞ
+    clicksound();
     QSequentialAnimationGroup* seqAniGroup1 = new QSequentialAnimationGroup;
     QSequentialAnimationGroup* seqAniGroup2 = new QSequentialAnimationGroup;
     QPropertyAnimation* ani1 = new QPropertyAnimation;
@@ -237,6 +238,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
 
     if (gCounter == 0) {
         g1 = qobject_cast<Gem*>(sender());//°ÑĞÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàĞÍ
+        
         gCounter = 1;
     }
     else if (gCounter == 1) {
@@ -323,6 +325,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈİ¸Ä³É½«Ñ¡ÖĞµÄÁ
                 if (check) rule->check(endFlag);
                 QParallelAnimationGroup* bombAni = clearBlock();//Ö´ĞĞÏû³ı·½¿é²Ù×÷
                 connect(bombAni, &QParallelAnimationGroup::finished, [=] {
+                    explodesound();
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 10; j++) {
                             if (deleteMatrix[i][j] == 1) {
@@ -365,4 +368,3 @@ void Game::on_pushButtonFinish_clicked()
     emit backSignal();
     //this->close();//±¾´°¿ÚÒş²Ø
 }
-

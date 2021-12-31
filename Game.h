@@ -33,10 +33,15 @@ public:
 	QParallelAnimationGroup* fallBlock();
 	void generatGems();
 	void resetBlock();
+	static void explodesound() {
+		PlaySound(TEXT("explode.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	}
+	static void clicksound() {
+		PlaySound(TEXT("click.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	}
 
 protected:
 	virtual void mousePressEvent(QMouseEvent* event);
-
 private:
 	Ui::Game ui;
 	int click_x, click_y;
