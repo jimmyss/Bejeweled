@@ -4,7 +4,7 @@
 Gem::Gem(int type, int len, int x, int y, QWidget* parent, int offset) : QPushButton(parent), _type(type), _x(x), _y(y)
 {
     initGemPath();
-    setGeometry(len * x + 20, len * y + 100, len, len);
+    setGeometry(len * x + 20, len * y + 55, len, len);
     setIcon(QIcon(gemPath[type]));
     setIconSize(QSize(len, len));
     setFlat(true);

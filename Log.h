@@ -1,8 +1,14 @@
 #pragma once
 
+//在头文件前面加上下面几行代码
+#ifdef WIN32  
+#pragma execution_character_set("utf-8")  
+#endif
+
 #include <qdialog.h>
 #include "ui_Log.h"
 #include "DButil.h"
+#include <QMessageBox.h>
 
 class Log : public QDialog
 {

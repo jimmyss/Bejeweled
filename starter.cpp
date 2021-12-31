@@ -34,7 +34,7 @@ Starter::Starter(QWidget *parent)
         "QPushButton{border-width:4px;}"                     //边框宽度像素
         "QPushButton{border-radius:10px;}"                   //边框圆角半径像素
         "QPushButton{border-color:rgba(241,158,194,30);}"    //边框颜色
-        "QPushButton{font:bold 30px;}"                       //字体，字体大小
+        "QPushButton{font:bold 20px;}"                       //字体，字体大小
         "QPushButton{color:rgba(0,0,0,100);}"                //字体颜色
         "QPushButton{padding:6px;}";                          //填衬
 

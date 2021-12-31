@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Rank.ui'
 **
-** Created by: Qt User Interface Compiler version 6.1.3
+** Created by: Qt User Interface Compiler version 5.12.9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -26,10 +26,14 @@ public:
     {
         if (Rank->objectName().isEmpty())
             Rank->setObjectName(QString::fromUtf8("Rank"));
-        Rank->resize(170, 141);
+        Rank->resize(180, 140);
+        Rank->setMinimumSize(QSize(180, 140));
+        Rank->setMaximumSize(QSize(180, 140));
         tableView = new QTableView(Rank);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(0, 0, 171, 141));
+        tableView->setGeometry(QRect(0, 0, 180, 140));
+        tableView->setMinimumSize(QSize(180, 140));
+        tableView->setMaximumSize(QSize(180, 140));
 
         retranslateUi(Rank);
 
@@ -38,7 +42,7 @@ public:
 
     void retranslateUi(QWidget *Rank)
     {
-        Rank->setWindowTitle(QCoreApplication::translate("Rank", "QtWidgetsClass", nullptr));
+        Rank->setWindowTitle(QApplication::translate("Rank", "QtWidgetsClass", nullptr));
     } // retranslateUi
 
 };

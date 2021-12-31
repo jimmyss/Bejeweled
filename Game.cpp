@@ -16,6 +16,21 @@ Game::Game(QWidget *parent)
     QImage fitimgpic = ImgAllbackground.scaled(this->width(), this->height(), Qt::IgnoreAspectRatio);
     PAllbackground.setBrush(QPalette::Window, QBrush(fitimgpic));
     this->setPalette(PAllbackground);
+
+    // ÉèÖÃ°´Å¥ÑùÊ½
+    QString buttonStyle1 = "QPushButton{background-color: rgb(245,212, 217);}" //°´Å¥ÑÕÉ«
+        "QPushButton::hover{background-color: rgb(249, 204, 226);}" //Êó±êÐüÍ£Ê±
+        "QPushButton::pressed{background-color: rgb(242, 156, 177);}" //µã»÷°´Å¥
+        "QPushButton{border-style:outset;}"                  //±ß¿òÑùÊ½£¨inset/outset£©
+        "QPushButton{border-width:4px;}"                     //±ß¿ò¿í¶ÈÏñËØ
+        "QPushButton{border-radius:10px;}"                   //±ß¿òÔ²½Ç°ë¾¶ÏñËØ
+        "QPushButton{border-color:rgba(241,158,194,30);}"    //±ß¿òÑÕÉ«
+        "QPushButton{font:bold 15px;}"                       //×ÖÌå£¬×ÖÌå´óÐ¡
+        "QPushButton{color:rgba(0,0,0,100);}"                //×ÖÌåÑÕÉ«
+        "QPushButton{padding:6px;}";                          //Ìî³Ä
+
+    ui.pushButtonFinish->setStyleSheet(buttonStyle1);
+
     srand((int)time(0));
     bool flag = true;
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Log.ui'
 **
-** Created by: Qt User Interface Compiler version 6.1.3
+** Created by: Qt User Interface Compiler version 5.12.9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -22,39 +22,46 @@ class Ui_Log
 {
 public:
     QLabel *labelPassword;
-    QLineEdit *lineEditHint;
     QLineEdit *lineEditName;
     QLineEdit *lineEditPassword;
     QPushButton *pushButtonLog;
     QPushButton *pushButtonReg;
     QLabel *labelName;
+    QLineEdit *lineEditHint;
 
     void setupUi(QWidget *Log)
     {
         if (Log->objectName().isEmpty())
             Log->setObjectName(QString::fromUtf8("Log"));
-        Log->resize(516, 152);
+        Log->resize(510, 380);
+        Log->setMinimumSize(QSize(510, 380));
+        Log->setMaximumSize(QSize(510, 380));
         labelPassword = new QLabel(Log);
         labelPassword->setObjectName(QString::fromUtf8("labelPassword"));
-        labelPassword->setGeometry(QRect(20, 60, 72, 21));
-        lineEditHint = new QLineEdit(Log);
-        lineEditHint->setObjectName(QString::fromUtf8("lineEditHint"));
-        lineEditHint->setGeometry(QRect(220, 100, 211, 31));
+        labelPassword->setGeometry(QRect(110, 250, 72, 21));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\347\255\211\347\272\277"));
+        font.setPointSize(12);
+        labelPassword->setFont(font);
         lineEditName = new QLineEdit(Log);
         lineEditName->setObjectName(QString::fromUtf8("lineEditName"));
-        lineEditName->setGeometry(QRect(120, 20, 311, 31));
+        lineEditName->setGeometry(QRect(190, 195, 190, 31));
         lineEditPassword = new QLineEdit(Log);
         lineEditPassword->setObjectName(QString::fromUtf8("lineEditPassword"));
-        lineEditPassword->setGeometry(QRect(120, 60, 311, 31));
+        lineEditPassword->setGeometry(QRect(190, 245, 190, 31));
         pushButtonLog = new QPushButton(Log);
         pushButtonLog->setObjectName(QString::fromUtf8("pushButtonLog"));
-        pushButtonLog->setGeometry(QRect(20, 100, 93, 28));
+        pushButtonLog->setGeometry(QRect(100, 300, 93, 40));
         pushButtonReg = new QPushButton(Log);
         pushButtonReg->setObjectName(QString::fromUtf8("pushButtonReg"));
-        pushButtonReg->setGeometry(QRect(120, 100, 93, 28));
+        pushButtonReg->setGeometry(QRect(200, 300, 93, 40));
         labelName = new QLabel(Log);
         labelName->setObjectName(QString::fromUtf8("labelName"));
-        labelName->setGeometry(QRect(20, 25, 72, 20));
+        labelName->setGeometry(QRect(110, 200, 72, 20));
+        labelName->setFont(font);
+        lineEditHint = new QLineEdit(Log);
+        lineEditHint->setObjectName(QString::fromUtf8("lineEditHint"));
+        lineEditHint->setGeometry(QRect(300, 300, 91, 41));
 
         retranslateUi(Log);
 
@@ -63,11 +70,11 @@ public:
 
     void retranslateUi(QWidget *Log)
     {
-        Log->setWindowTitle(QCoreApplication::translate("Log", "Log", nullptr));
-        labelPassword->setText(QCoreApplication::translate("Log", "\345\257\206\347\240\201", nullptr));
-        pushButtonLog->setText(QCoreApplication::translate("Log", "\347\231\273\345\275\225", nullptr));
-        pushButtonReg->setText(QCoreApplication::translate("Log", "\346\263\250\345\206\214", nullptr));
-        labelName->setText(QCoreApplication::translate("Log", "\347\224\250\346\210\267\345\220\215", nullptr));
+        Log->setWindowTitle(QApplication::translate("Log", "Log", nullptr));
+        labelPassword->setText(QApplication::translate("Log", "\345\257\206\347\240\201", nullptr));
+        pushButtonLog->setText(QApplication::translate("Log", "\347\231\273\345\275\225", nullptr));
+        pushButtonReg->setText(QApplication::translate("Log", "\346\263\250\345\206\214", nullptr));
+        labelName->setText(QApplication::translate("Log", "\347\224\250\346\210\267\345\220\215", nullptr));
     } // retranslateUi
 
 };

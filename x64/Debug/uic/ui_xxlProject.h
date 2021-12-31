@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'xxlProject.ui'
 **
-** Created by: Qt User Interface Compiler version 6.1.3
+** Created by: Qt User Interface Compiler version 5.12.9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -36,7 +36,9 @@ public:
     {
         if (XXLProjectClass->objectName().isEmpty())
             XXLProjectClass->setObjectName(QString::fromUtf8("XXLProjectClass"));
-        XXLProjectClass->resize(510, 381);
+        XXLProjectClass->resize(510, 380);
+        XXLProjectClass->setMinimumSize(QSize(510, 380));
+        XXLProjectClass->setMaximumSize(QSize(510, 380));
         centralwidget = new QWidget(XXLProjectClass);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
@@ -76,10 +78,10 @@ public:
 
     void retranslateUi(QMainWindow *XXLProjectClass)
     {
-        XXLProjectClass->setWindowTitle(QCoreApplication::translate("XXLProjectClass", "MainWindow", nullptr));
-        pushButtonStart->setText(QCoreApplication::translate("XXLProjectClass", "\345\274\200\345\247\213", nullptr));
-        pushButtonHelp->setText(QCoreApplication::translate("XXLProjectClass", "\345\270\256\345\212\251", nullptr));
-        pushButtonRank->setText(QCoreApplication::translate("XXLProjectClass", "\346\216\222\350\241\214\346\246\234", nullptr));
+        XXLProjectClass->setWindowTitle(QApplication::translate("XXLProjectClass", "MainWindow", nullptr));
+        pushButtonStart->setText(QApplication::translate("XXLProjectClass", "\345\274\200\345\247\213", nullptr));
+        pushButtonHelp->setText(QApplication::translate("XXLProjectClass", "\345\270\256\345\212\251", nullptr));
+        pushButtonRank->setText(QApplication::translate("XXLProjectClass", "\346\216\222\350\241\214\346\246\234", nullptr));
     } // retranslateUi
 
 };

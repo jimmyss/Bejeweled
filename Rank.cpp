@@ -27,6 +27,11 @@ Rank::Rank(QWidget *parent)
 	model->setQuery(QString("select * from player"));
 	ui.tableView->setModel(model);
 	ui.tableView->setColumnHidden(1, true);
+
+	// 设置tableView颜色
+	ui.tableView->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(245,212, 217);font:13pt '宋体';color: black;};");
+	ui.tableView->setStyleSheet("selection-background-color:pink;"); //设置选中背景色
+
 	db.close();
 }
 
