@@ -257,12 +257,8 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
             rule->swap(g1y, g1x, g2y, g2x);
 
             bool endFlag = true;
-            while (true) {
-                resetGem(g1y, g1x, g2y, g2x);
-                rule->adjust(fallMatrix, generateMatrix, endFlag);
-                if (endFlag) break;
-                else endFlag = true;
-            }
+            resetGem(g1y, g1x, g2y, g2x);
+
             fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
             generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
             deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
