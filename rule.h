@@ -31,7 +31,7 @@ public:
     void check(bool& c);
     void fallGem(vector<vector<int>>& fallM, vector<vector<int>>& genM);
     void dispaly();
-    QParallelAnimationGroup* showBomb(Gem* gems[10][10], vector<vector<int>>& delM);
+    QParallelAnimationGroup* showBomb(Gem* gems[10][10], vector<vector<int>>& delM,int& roundNumber);
     bool isCanSwap(int i, int j, int a, int b);
     void switchGem(int i, int j, int a, int b);
     void clearBomb();
