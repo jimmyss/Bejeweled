@@ -7,10 +7,13 @@ Game::Game(QWidget *parent)
     runtime = new QTimer(this);
     rule = new Bejewled();
     connect(runtime, SIGNAL(timeout()), this, SLOT(update()));
+
     //ÉèÖÃ±³¾°Í¼Æ¬
-    QPalette pal = this->palette();
-    pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/background.png")));
-    setPalette(pal);
+    QPalette PAllbackground = this->palette();
+    QImage ImgAllbackground("pictures/style1/bg.jpg");
+    QImage fitimgpic = ImgAllbackground.scaled(this->width(), this->height(), Qt::IgnoreAspectRatio);
+    PAllbackground.setBrush(QPalette::Window, QBrush(fitimgpic));
+    this->setPalette(PAllbackground);
     srand((int)time(0));
     bool flag = true;
     fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));

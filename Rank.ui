@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>170</width>
+    <height>141</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>QtWidgetsClass</string>
   </property>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>90</y>
-     <width>104</width>
-     <height>87</height>
+     <x>0</x>
+     <y>0</y>
+     <width>171</width>
+     <height>141</height>
     </rect>
    </property>
   </widget>

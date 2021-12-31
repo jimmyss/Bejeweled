@@ -14,6 +14,7 @@ public:
 private:
     Ui::XXLProjectClass ui;
     Game* game;
+
 private slots:
     void on_pushButtonRank_clicked();
     void on_pushButtonHelp_clicked();

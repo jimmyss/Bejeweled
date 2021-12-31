@@ -1,36 +1,40 @@
 #include "Rank.h"
 #include<QFile>
 
+#include <QTableView>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlRecord>
+#include <QtSql/QSqlQuery>
+#include "QtSql/QsqlQueryModel"
+#include "QDebug"
+#include "QModelIndex"
+
 Rank::Rank(QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
-	QPalette pal = this->palette();
-	pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/recordbackground.jpg")));
-	setPalette(pal);
-	showRank();
+
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+	db.setDatabaseName("PlayerData.db");
+
+	if (!db.open())
+	{
+		qDebug() << "mistake"; //错误处理
+	}
+
+	static QSqlQueryModel* model = new QSqlQueryModel(ui.tableView);
+	model->setQuery(QString("select * from player"));
+	ui.tableView->setModel(model);
+	ui.tableView->setColumnHidden(1, true);
+	db.close();
 }
 
 Rank::~Rank()
 {
 }
 void Rank::showRank() {
-	QFile f("./Rank.txt");
-	QString displayString;
-	if (!f.open(QIODevice::ReadOnly | QIODevice::Text))//打开指定文件
-	{
-		ui.textEdit->append("not successful");
-	}
 
-	while (!f.atEnd())
-	{
-		QByteArray line = f.readLine();
-		QString str(line);
-		displayString.append(str);
-	}
-
-	ui.textEdit->setText(displayString);
-	f.close();
 }
 
 

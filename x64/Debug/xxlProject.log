@@ -1,2 +1,5 @@
-﻿  rule.cpp
+﻿  uic Log.ui
+  Log.cpp
+  main.cpp
+  moc_Log.cpp
   xxlProject.vcxproj -> E:\系统默认\桌面\xxl-project\x64\Debug\xxlProject.exe

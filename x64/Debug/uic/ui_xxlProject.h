@@ -36,12 +36,12 @@ public:
     {
         if (XXLProjectClass->objectName().isEmpty())
             XXLProjectClass->setObjectName(QString::fromUtf8("XXLProjectClass"));
-        XXLProjectClass->resize(800, 600);
+        XXLProjectClass->resize(510, 381);
         centralwidget = new QWidget(XXLProjectClass);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(180, 160, 160, 131));
+        verticalLayoutWidget->setGeometry(QRect(180, 190, 160, 131));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -63,7 +63,7 @@ public:
         XXLProjectClass->setCentralWidget(centralwidget);
         menubar = new QMenuBar(XXLProjectClass);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 18));
+        menubar->setGeometry(QRect(0, 0, 510, 18));
         XXLProjectClass->setMenuBar(menubar);
         statusbar = new QStatusBar(XXLProjectClass);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
