@@ -1,18 +1,1 @@
-﻿  uic Help.ui
-  uic Game.ui
-  uic Log.ui
-  uic Rank.ui
-  Game.cpp
-  Help.cpp
-  Log.cpp
-  Rank.cpp
-  main.cpp
-  starter.cpp
-D:\CppProjects\xxl2.2\Game.cpp(68,12): warning C4804: “<”: 在操作中使用类型“bool”不安全
-D:\CppProjects\xxl2.2\Game.cpp(68,35): warning C4804: “<”: 在操作中使用类型“bool”不安全
-  moc_Game.cpp
-  moc_Help.cpp
-  moc_Log.cpp
-  moc_Rank.cpp
-  moc_starter.cpp
-  xxlProject.vcxproj -> D:\CppProjects\xxl2.2\x64\Debug\xxlProject.exe
+﻿  xxlProject.vcxproj -> E:\系统默认\桌面\xxlDSM\xxl2.2\x64\Debug\xxlProject.exe

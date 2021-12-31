@@ -7,9 +7,10 @@ Gem::Gem(int type, int len, int x, int y, QWidget* parent, int offset) : QPushBu
     setGeometry(len * x + 20, len * y + 55, len, len);
     setIcon(QIcon(gemPath[type]));
     setIconSize(QSize(len, len));
-    setFlat(true);
+    //setFlat(true);
+    QPropertyAnimation* genAni = gen();
     show();
-
+    genAni->start();
 
     connect(this, &Gem::clicked, [=](bool) {
         this->mouseClicked(this);
@@ -27,23 +28,29 @@ void Gem::initGemPath() {
     gemPath[6] = "pictures/blk7.bmp";
     gemPath[7] = "pictures/blk1.bmp";
 
-   /* gemPath[8] = "pictures/explode1.png";
-    gemPath[9] = "pictures/explode2.png";
-    gemPath[10] = "pictures/explode3.png";
-    gemPath[11] = "pictures/explode4.png";
-    gemPath[12] = "pictures/explode5.png";
-    gemPath[13] = "pictures/explode6.png";
-    gemPath[14] = "pictures/explode7.png";*/
+    /* gemPath[8] = "pictures/explode1.png";
+     gemPath[9] = "pictures/explode2.png";
+     gemPath[10] = "pictures/explode3.png";
+     gemPath[11] = "pictures/explode4.png";
+     gemPath[12] = "pictures/explode5.png";
+     gemPath[13] = "pictures/explode6.png";
+     gemPath[14] = "pictures/explode7.png";*/
 
 }
 
-void Gem::bomb() {
+QPropertyAnimation* Gem::bomb() {
     /*QTimer* timer1 = new QTimer(this);
     timer1->setInterval(100);
     connect(timer1, SIGNAL(timeout()), this, SLOT(on_timer_timeout()));
      timer1->start();*/
-    delete this;
+    QPropertyAnimation* bomb = new QPropertyAnimation;
+    bomb->setDuration(1000);
+    bomb->setStartValue(QRect(this->geometry().x(), this->geometry().y(), this->width(), this->height()));
+    bomb->setEndValue(QRect(this->geometry().x() + 0.5 * this->width(), this->geometry().y() + 0.5 * this->height(), 0, 0));
+    //delete this;
+    return bomb;
 }
+
 void Gem::on_timer_timeout() {
     if (num != 15) {
         setIcon(QIcon(gemPath[num]));
@@ -52,5 +59,11 @@ void Gem::on_timer_timeout() {
     else {
         delete this;
     }
-
+}
+QPropertyAnimation* Gem::gen() {
+    QPropertyAnimation* gen = new QPropertyAnimation;
+    gen->setDuration(1000);
+    gen->setStartValue(QRect(this->geometry().x() + 0.5 * this->width(), this->geometry().y() + 0.5 * this->height(), 0, 0));
+    gen->setEndValue(QRect(this->geometry().x(), this->geometry().y(), this->width(), this->height()));
+    return gen;
 }

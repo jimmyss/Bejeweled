@@ -1,9 +1,9 @@
 #include "Game.h"
 
-Game::Game(QWidget *parent)
-	: QWidget(parent)
+Game::Game(QWidget* parent)
+    : QWidget(parent)
 {
-	ui.setupUi(this);
+    ui.setupUi(this);
     runtime = new QTimer(this);
     rule = new Bejewled();
     connect(runtime, SIGNAL(timeout()), this, SLOT(update()));
@@ -40,7 +40,7 @@ Game::Game(QWidget *parent)
         for (int j = 0; j < 10; j++) {
             int rNum = rand() % 7;
             rule->setGraph(i, j, rNum);
-            rule->adjust(fallMatrix,generateMatrix,flag);
+            rule->adjust(fallMatrix, generateMatrix, flag);
         }
     }
     for (int i = 0; i < 10; i++) {
@@ -86,7 +86,7 @@ void Game::move(int x1, int y1, int x2, int y2) {//(20,100)-(440,520)ÄÚ £¨x1,y1£
 }
 
 void Game::setGems(int x, int y, int type) {
-    gems[x][y]=new Gem(rule->getGraph(x, y), 42, y, x, this);
+    gems[x][y] = new Gem(rule->getGraph(x, y), 42, y, x, this);
 }
 
 QPropertyAnimation* Game::fallAnimation(Gem* gem, int h, int flag) {
@@ -126,9 +126,63 @@ QPropertyAnimation* Game::fallAnimation(Gem* gem, int h, int flag) {
     return animation;
 }
 
+void Game::switchBlock() {
+    Gem* temp;
+    temp = gems[g1y][g1x];
+    gems[g1y][g1x] = gems[g2y][g2x];
+    gems[g2y][g2x] = temp;
+    gems[g1y][g1x]->setX(g1x);
+    gems[g1y][g1x]->setY(g1y);
+    gems[g2y][g2x]->setX(g2x);
+    gems[g2y][g2x]->setY(g2y);
+
+    rule->swap(g1y, g1x, g2y, g2x);
+}
+
+QParallelAnimationGroup* Game::clearBlock() {
+    QParallelAnimationGroup* bomb;
+    bomb = rule->showBomb(gems, deleteMatrix);
+    rule->fallGem(fallMatrix, generateMatrix);
+    return bomb;
+}
+
+QParallelAnimationGroup* Game::fallBlock() {
+    QParallelAnimationGroup* fall = new QParallelAnimationGroup;
+    for (int i = 9; i >= 0; i--) {
+        for (int j = 0; j < 10; j++) {
+            if (fallMatrix[i][j] != 0 && deleteMatrix[i][j] != 1) {
+                QPropertyAnimation* ani = fallAnimation(gems[i][j], fallMatrix[i][j], 2);
+                fall->addAnimation(ani);
+                gems[i + fallMatrix[i][j]][j] = gems[i][j];
+                gems[i][j] = NULL;
+                gems[i + fallMatrix[i][j]][j]->setX(j);
+                gems[i + fallMatrix[i][j]][j]->setY(i + fallMatrix[i][j]);
+            }
+        }
+    }
+    return fall;
+}
+void Game::generatGems() {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (generateMatrix[i][j] != -1) {
+                gems[i][j] = new Gem(generateMatrix[i][j], 42, j, i, this);
+                connect(gems[i][j], SIGNAL(clicked()), this, SLOT(buttonClicked()));//ÐÅºÅ0
+            }
+        }
+    }
+}
+
+
+void Game::resetBlock() {
+    fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+    generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
+    deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+}
+
 void Game::resetGem(int g1y, int g1x, int g2y, int g2x) {
     //Ïû³ý·½¿é
-    rule->showBomb(gems,deleteMatrix);
+    rule->showBomb(gems, deleteMatrix);
     //ÏÂÂä·½¿é&Éú³É·½¿é
     rule->fallGem(fallMatrix, generateMatrix);
     /*if (gems[g1y][g1x] == NULL) {
@@ -141,7 +195,7 @@ void Game::resetGem(int g1y, int g1x, int g2y, int g2x) {
     }*/
     for (int i = 9; i >= 0; i--) {
         for (int j = 0; j < 10; j++) {
-            if (fallMatrix[i][j] != 0 &&deleteMatrix[i][j]!=1) {
+            if (fallMatrix[i][j] != 0 && deleteMatrix[i][j] != 1) {
                 QPropertyAnimation* ani = fallAnimation(gems[i][j], fallMatrix[i][j], 2);
                 ani->start();
                 gems[i + fallMatrix[i][j]][j] = gems[i][j];
@@ -185,12 +239,12 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
         g1 = qobject_cast<Gem*>(sender());//°ÑÐÅºÅµÄ·¢ËÍÕß×ª»»³ÉpushbuttonÀàÐÍ
         gCounter = 1;
     }
-   else if (gCounter == 1) {
+    else if (gCounter == 1) {
         g2 = qobject_cast<Gem*>(sender());
-        int g1x = g1->x(), g1y = g1->y(), g2x = g2->x(), g2y = g2->y();
-        int switchFlag=0;
+        g1x = g1->x(), g1y = g1->y(), g2x = g2->x(), g2y = g2->y();
+        int switchFlag = 0;
         //Èç¹ûÁ½¸ö·½¿é²»¿¿ÔÚÒ»Æð»òÕßÑ¡µÄÊÇÍ¬Ò»¸ö·½¿é
-        if (abs(g1->y() - g2->y()) + abs(g1->x() - g2->x()) > 1||abs( g1->y() - g2->y()) + abs(g1->x() - g2->x())==0)
+        if (abs(g1->y() - g2->y()) + abs(g1->x() - g2->x()) > 1 || abs(g1->y() - g2->y()) + abs(g1->x() - g2->x()) == 0)
             qDebug() << "cannot swap";
         //Èç¹ûÁ½¸ö·½¿é¿¿ÔÚÒ»Æð
         else {
@@ -225,7 +279,7 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
             seqAniGroup2->addAnimation(ani2);
         }
         if (!rule->isCanSwap(g1y, g1x, g2y, g2x)) {//²»ÄÜ½»»»µÄ»»»Ø¶¯»­
-            qDebug() << "swap"<<g1->type()<<","<<g2->type()<<" invalid";
+            qDebug() << "swap" << g1->type() << "," << g2->type() << " invalid";
             switch (switchFlag)
             {
                 //ÉÏ
@@ -262,25 +316,44 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
         {
             seqAniGroup1->start();
             seqAniGroup2->start();
-            Gem* temp;
-            temp = gems[g1y][g1x];
-            gems[g1y][g1x] = gems[g2y][g2x];
-            gems[g2y][g2x] = temp;
-            gems[g1y][g1x]->setX(g1x);
-            gems[g1y][g1x]->setY(g1y);
-            gems[g2y][g2x]->setX(g2x);
-            gems[g2y][g2x]->setY(g2y);
-            rule->switchGem(g1y, g1x, g2y, g2x);
-            rule->swap(g1y, g1x, g2y, g2x);
-
-            bool endFlag = true;
-            resetGem(g1y, g1x, g2y, g2x);
-
-            fallMatrix = vector<vector<int>>(10, vector<int>(10, 0));
-            generateMatrix = vector<vector<int>>(10, vector<int>(10, -1));
-            deleteMatrix = vector<vector<int>>(10, vector<int>(10, 0));
+            endFlag = true;
+            switchBlock();//ÏÈ½»»»Á½¸ö·½¿é
+            check = false;
+            while (true) {
+                if (check) rule->check(endFlag);
+                QParallelAnimationGroup* bombAni = clearBlock();//Ö´ÐÐÏû³ý·½¿é²Ù×÷
+                connect(bombAni, &QParallelAnimationGroup::finished, [=] {
+                    for (int i = 0; i < 10; i++) {
+                        for (int j = 0; j < 10; j++) {
+                            if (deleteMatrix[i][j] == 1) {
+                                endFlag = false;
+                                gems[i][j]->deleteBlock();
+                                gems[i][j] = NULL;
+                            }
+                        }
+                    }
+                    QParallelAnimationGroup* fallAni = fallBlock();//Ö´ÐÐ·½¿éÏÂÂä²Ù×÷
+                    connect(fallAni, &QParallelAnimationGroup::finished, [=] {
+                        generatGems();
+                        resetBlock();//ÖØÖÃÈý¸ö¾ØÕóµÄÖµ
+                        if (endFlag) {
+                            qDebug() << "end";
+                            endFlag = true;
+                            check = false;
+                        }
+                        else {
+                            qDebug() << "not end";
+                            endFlag = false;
+                            check = true;
+                        }
+                        });
+                    fallAni->start();
+                    });
+                bombAni->start();
+                if (endFlag) break;
+            }
         }
-        
+
         gCounter = 0;
     }
 }

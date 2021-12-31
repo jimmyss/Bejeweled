@@ -8,6 +8,7 @@
 #include <QPixmap>
 #include <QMovie>
 #include <QLabel>
+#include <QPropertyAnimation>
 #include<qicon.h>
 #include<qtimer.h>
 
@@ -21,10 +22,11 @@ public:
     int y() { return _y; }
     void setY(int n) { _y = n; }
     void setX(int n) { _x = n; }
+    void deleteBlock() { delete this; }
     int type() { return _type; }
     int num = 8;
-    void bomb();
-
+    QPropertyAnimation* bomb();
+    QPropertyAnimation* gen();
 private:
     QMap<int, QString> gemPath;
     void initGemPath();

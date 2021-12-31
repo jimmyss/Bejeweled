@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Game.ui'
 **
-** Created by: Qt User Interface Compiler version 6.1.3
+** Created by: Qt User Interface Compiler version 5.12.11
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -39,8 +39,8 @@ public:
 
     void retranslateUi(QWidget *Game)
     {
-        Game->setWindowTitle(QCoreApplication::translate("Game", "Game", nullptr));
-        pushButtonFinish->setText(QCoreApplication::translate("Game", "\347\273\223\346\235\237\346\270\270\346\210\217", nullptr));
+        Game->setWindowTitle(QApplication::translate("Game", "Game", nullptr));
+        pushButtonFinish->setText(QApplication::translate("Game", "\347\273\223\346\235\237\346\270\270\346\210\217", nullptr));
     } // retranslateUi
 
 };

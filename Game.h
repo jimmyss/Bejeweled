@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_Game.h"
+#include <QPropertyAnimation>
 #include <QPainter>
 #include <QPixmap>
 #include <QMouseEvent>
@@ -22,11 +23,17 @@ class Game : public QWidget
 	Q_OBJECT
 
 public:
-	Game(QWidget *parent = Q_NULLPTR);
+	Game(QWidget* parent = Q_NULLPTR);
 	~Game();
 	QPropertyAnimation* fallAnimation(Gem* gem, int h, int flag);
-	void setGems(int x,int y,int type);
+	void setGems(int x, int y, int type);
 	void resetGem(int g1y, int g1x, int g2y, int g2x);
+	void switchBlock();
+	QParallelAnimationGroup* clearBlock();
+	QParallelAnimationGroup* fallBlock();
+	void generatGems();
+	void resetBlock();
+
 protected:
 	virtual void mousePressEvent(QMouseEvent* event);
 
@@ -34,7 +41,10 @@ private:
 	Ui::Game ui;
 	int click_x, click_y;
 	int move_x1, move_x2, move_y1, move_y2;
+	int g1y, g1x, g2y, g2x;
 	int gCounter = 0;//用于记录点了多少次方块，点两次时执行交换
+	bool endFlag = true;//endFlag为true表示可以结束，否则表示不能结束
+	bool check = false;
 	vector<vector<int>> fallMatrix;
 	vector<vector<int>> generateMatrix;
 	vector<vector<int>> deleteMatrix;

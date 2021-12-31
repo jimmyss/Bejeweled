@@ -3,3 +3,4 @@ D:\CppProjects\xxl2.2\x64\Debug\xxlProject.exe
 C:\Users\lenovo\Desktop\xxl2.2\x64\Debug\xxlProject.exe
 E:\系统默认\桌面\xxl-project\x64\Debug\xxlProject.exe
 D:\AA-programAssignment\pracicalTraining\week5_happy\zhanghao3\xxl2.2\x64\Debug\xxlProject.exe
+E:\系统默认\桌面\xxlDSM\xxl2.2\x64\Debug\xxlProject.exe
