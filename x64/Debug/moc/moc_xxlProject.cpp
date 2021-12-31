@@ -69,10 +69,10 @@ static const uint qt_meta_data_xxlProject[] = {
        0        // eod
 };
 
-void xxlProject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Starter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<xxlProject *>(_o);
+        auto *_t = static_cast<Starter *>(_o);
         (void)_t;
         switch (_id) {
         case 0: _t->on_pushButtonRank_clicked(); break;
@@ -84,7 +84,7 @@ void xxlProject::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     (void)_a;
 }
 
-const QMetaObject xxlProject::staticMetaObject = { {
+const QMetaObject Starter::staticMetaObject = { {
     QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
     qt_meta_stringdata_xxlProject.offsetsAndSize,
     qt_meta_data_xxlProject,
@@ -100,12 +100,12 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_xxlProject_t
 } };
 
 
-const QMetaObject *xxlProject::metaObject() const
+const QMetaObject *Starter::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *xxlProject::qt_metacast(const char *_clname)
+void *Starter::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_xxlProject.stringdata0))
@@ -113,7 +113,7 @@ void *xxlProject::qt_metacast(const char *_clname)
     return QMainWindow::qt_metacast(_clname);
 }
 
-int xxlProject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Starter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)

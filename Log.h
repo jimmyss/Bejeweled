@@ -1,23 +1,23 @@
 #pragma once
 
-#include <QWidget>
+#include <qdialog.h>
 #include "ui_Log.h"
-#include "xxlProject.h"
 #include "DButil.h"
 
-class Log : public QWidget
+class Log : public QDialog
 {
 	Q_OBJECT
-
 public:
 	Log(QWidget *parent = Q_NULLPTR);
 	~Log();
 
+	void setDB(DButil* db);
+
 private:
 	Ui::Log ui;
-	xxlProject* xxlproject;
-	DButil db;
-
+	DButil* db;
+signals:
+	void toStarter();
 private slots:
 	void on_pushButtonLog_clicked();
 	void on_pushButtonReg_clicked();

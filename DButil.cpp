@@ -17,6 +17,11 @@ void DButil::initDB()
 
 DButil::DButil()
 {
+	
+}
+
+int DButil::login(QString name, QString password)
+{
 	db = QSqlDatabase::addDatabase("QSQLITE");
 	db.setDatabaseName("PlayerData.db");
 	if (!db.open()) {
@@ -24,13 +29,6 @@ DButil::DButil()
 	}
 	else
 		qDebug() << "successfully open database";
-}
-
-int DButil::login(QString name, QString password)
-{
-
-	qDebug() << name;
-	qDebug() << password;
 
 	QSqlQuery sql_query;
 	QString select_sql = "select password from player where name = ?";
@@ -52,10 +50,20 @@ int DButil::login(QString name, QString password)
 		else
 			return 0;
 	}
+
+	db.close();
 }
 
 int DButil::registrate(QString name, QString password)
 {
+	db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("PlayerData.db");
+	if (!db.open()) {
+		qDebug() << "can't open database";
+	}
+	else
+		qDebug() << "successfully open database";
+
 	QSqlQuery sql_query;
 
 	QString select_sql = "select name from player where name = ?";
@@ -84,10 +92,19 @@ int DButil::registrate(QString name, QString password)
 	}
 	else
 		return 1;
+	db.close();
 }
 
 int DButil::updateRank(QString name, int rank)
 {
+	db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("PlayerData.db");
+	if (!db.open()) {
+		qDebug() << "can't open database";
+	}
+	else
+		qDebug() << "successfully open database";
+
 	QSqlQuery sql_query;
 	QString update_sql = "update player set rank = :rank where name = :name";
 	sql_query.prepare(update_sql);
@@ -101,6 +118,7 @@ int DButil::updateRank(QString name, int rank)
 	}
 	else
 		return 1;
+	db.close();
 }
 
 void DButil::showInfo()

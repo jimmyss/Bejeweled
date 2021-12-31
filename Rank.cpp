@@ -33,8 +33,16 @@ Rank::Rank(QWidget *parent)
 Rank::~Rank()
 {
 }
-void Rank::showRank() {
 
+void Rank::setDB(DButil* db)
+{
+	this->db = db;
 }
 
+void Rank::closeEvent(QCloseEvent* event) {
+	emit backToMain();
+}
 
+void Rank::showRank()
+{
+}

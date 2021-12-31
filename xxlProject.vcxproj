@@ -94,7 +94,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="xxlProject.qrc" />
-    <QtMoc Include="xxlProject.h" />
+    <QtMoc Include="starter.h" />
     <ClCompile Include="DButil.cpp" />
     <ClCompile Include="Gem.cpp" />
     <ClCompile Include="Help.cpp" />
@@ -102,7 +102,7 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Rank.cpp" />
     <ClCompile Include="rule.cpp" />
-    <ClCompile Include="xxlProject.cpp" />
+    <ClCompile Include="starter.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="Help.ui" />
     <QtUic Include="Game.ui" />

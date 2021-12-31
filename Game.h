@@ -10,7 +10,7 @@
 #include<ctime>
 #include <QPropertyAnimation>
 #include <QSequentialAnimationGroup>
-#include<iostream>
+#include <qmessagebox.h>
 #include<qdebug.h>
 #include"Gem.h"
 #include"rule.h"
@@ -50,4 +50,6 @@ private slots:
 	void on_pushButtonFinish_clicked();
 	void on_pushButtonHint_clicked();
 	void buttonClicked();
+signals:
+	void backSignal();
 };

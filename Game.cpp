@@ -8,6 +8,8 @@ Game::Game(QWidget *parent)
     rule = new Bejewled();
     connect(runtime, SIGNAL(timeout()), this, SLOT(update()));
 
+    this->setAttribute(Qt::WA_DeleteOnClose);
+
     //ÉèÖÃ±³¾°Í¼Æ¬
     QPalette PAllbackground = this->palette();
     QImage ImgAllbackground("pictures/style1/bg.jpg");
@@ -270,5 +272,13 @@ void Game::buttonClicked() {//2021-12-21 ¶ÅÊÀÃ¯ buttonClickedÔ­ÄÚÈÝ¸Ä³É½«Ñ¡ÖÐµÄÁ
         
         gCounter = 0;
     }
+}
+
+void Game::on_pushButtonFinish_clicked()
+{
+    QMessageBox message(QMessageBox::NoIcon, "Tip", "Back successfully ");
+    message.exec();
+    emit backSignal();
+    //this->close();//±¾´°¿ÚÒþ²Ø
 }
 

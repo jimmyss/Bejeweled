@@ -20,3 +20,8 @@ Help::Help(QWidget *parent)
 Help::~Help()
 {
 }
+
+//ÖØĞ´closeÊÂ¼ş
+void Help::closeEvent(QCloseEvent* event) {
+	emit backToMain();
+}
