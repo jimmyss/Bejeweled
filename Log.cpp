@@ -22,7 +22,9 @@ Log::Log(QWidget *parent)
 		"QPushButton{border-color:rgba(241,158,194,30);}"    //边框颜色
 		"QPushButton{font:bold 15px;}"                       //字体，字体大小
 		"QPushButton{color:rgba(0,0,0,100);}"                //字体颜色
-		"QPushButton{padding:6px;}";                          //填衬
+		"QPushButton{padding:6px;}";     //填衬
+
+	ui.lineEditHint->setText("welcome! :)");
 
 	ui.pushButtonLog->setStyleSheet(buttonStyle1);
 	ui.pushButtonReg->setStyleSheet(buttonStyle1);
@@ -47,14 +49,14 @@ void Log::on_pushButtonLog_clicked() {
 	int res = -1;
 
 	if (name.isEmpty()) {
-		ui.lineEditHint->setText("empty name");
+		ui.lineEditHint->setText("用户名不能为空！");
 		//QMessageBox::about(NULL, "警告", "用户名不能为空！");
-		res = -1;
+		return;
 	}
 	else if (password.isEmpty()) {
-		ui.lineEditHint->setText("empty password");
+		ui.lineEditHint->setText("密码不能为空！");
 		//QMessageBox::about(NULL, "警告", "密码不能为空！");
-		res = 0;
+		return;
 	}
 	else {
 		res = db->login(name, password);
@@ -62,12 +64,12 @@ void Log::on_pushButtonLog_clicked() {
 
 
 	if (res == -1) {
-		ui.lineEditHint->setText("erroe");
+		ui.lineEditHint->setText("操作失败，请再次尝试");
 		//QMessageBox::about(NULL, "警告", "错误！");
 
 	}
 	if (res == 0) {
-		ui.lineEditHint->setText("wrong pass/not registrate");
+		ui.lineEditHint->setText("用户名或密码错误");
 		//QMessageBox::about(NULL, "警告", "用户名或密码错误");
 
 	}
@@ -83,31 +85,31 @@ void Log::on_pushButtonReg_clicked() {
 	int res;
 
 	if (name.isEmpty()) {
-		ui.lineEditHint->setText("empty name");
+		ui.lineEditHint->setText("用户名不能为空！");
 		//QMessageBox::about(NULL, "警告", "用户名不能为空！");
-		res = -1;
+		return;
 	}
 	else if (password.isEmpty()) {
-		ui.lineEditHint->setText("empty password");
+		ui.lineEditHint->setText("密码不能为空！");
 		//QMessageBox::about(NULL, "警告", "密码不能为空！");
-		res = 0;
+		return;
 	}
 	else {
 		res = db->login(name, password);
 	}
 
 	if (res == -1) {
-		ui.lineEditHint->setText("error");
+		ui.lineEditHint->setText("操作失败，请再次尝试");
 		//QMessageBox::about(NULL, "警告", "错误！");
 
 	}
 	if (res == 0) {
-		ui.lineEditHint->setText("same name");
+		ui.lineEditHint->setText("用户名重复！");
 		//QMessageBox::about(NULL, "警告", "用户名重复！");
 
 	}
 	if (res == 1) {
-		ui.lineEditHint->setText("regs");
+		ui.lineEditHint->setText("注测成功！");
 		//QMessageBox::about(NULL, "提示", "注测成功！");
 
 	}

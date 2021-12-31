@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+<<<<<<< HEAD
+    <QtLastBackgroundBuild>2021-12-31T15:12:57.7617582Z</QtLastBackgroundBuild>
+=======
+    <QtLastBackgroundBuild>2021-12-31T12:00:09.5132007Z</QtLastBackgroundBuild>
+>>>>>>> 8c03382fc014d7f78d48fbd0c386d852bec41c02
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtLastBackgroundBuild>2021-12-30T09:19:34.5915034Z</QtLastBackgroundBuild>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtLastBackgroundBuild>2021-12-30T09:19:34.5915034Z</QtLastBackgroundBuild>
+  </PropertyGroup>
+</Project>

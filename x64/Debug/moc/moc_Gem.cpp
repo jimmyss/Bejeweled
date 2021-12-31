@@ -1,18 +1,20 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Gem.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.9)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
+#include <memory>
 #include "../../../Gem.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Gem.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.12.9. It"
+#elif Q_MOC_OUTPUT_REVISION != 68
+#error "This file was generated using the moc from 6.1.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -21,21 +23,18 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Gem_t {
-    QByteArrayData data[5];
+    const uint offsetsAndSize[10];
     char stringdata0[40];
 };
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Gem_t, stringdata0) + ofs \
-        - idx * sizeof(QByteArrayData)) \
-    )
+#define QT_MOC_LITERAL(ofs, len) \
+    uint(offsetof(qt_meta_stringdata_Gem_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_Gem_t qt_meta_stringdata_Gem = {
     {
-QT_MOC_LITERAL(0, 0, 3), // "Gem"
-QT_MOC_LITERAL(1, 4, 12), // "mouseClicked"
-QT_MOC_LITERAL(2, 17, 0), // ""
-QT_MOC_LITERAL(3, 18, 4), // "Gem*"
-QT_MOC_LITERAL(4, 23, 16) // "on_timer_timeout"
+QT_MOC_LITERAL(0, 3), // "Gem"
+QT_MOC_LITERAL(4, 12), // "mouseClicked"
+QT_MOC_LITERAL(17, 0), // ""
+QT_MOC_LITERAL(18, 4), // "Gem*"
+QT_MOC_LITERAL(23, 16) // "on_timer_timeout"
 
     },
     "Gem\0mouseClicked\0\0Gem*\0on_timer_timeout"
@@ -45,7 +44,7 @@ QT_MOC_LITERAL(4, 23, 16) // "on_timer_timeout"
 static const uint qt_meta_data_Gem[] = {
 
  // content:
-       8,       // revision
+       9,       // revision
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
@@ -55,11 +54,11 @@ static const uint qt_meta_data_Gem[] = {
        0,       // flags
        1,       // signalCount
 
- // signals: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x06 /* Public */,
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    1,   26,    2, 0x06,    0 /* Public */,
 
- // slots: name, argc, parameters, tag, flags
-       4,    0,   27,    2, 0x08 /* Private */,
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       4,    0,   29,    2, 0x08,    2 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -74,7 +73,7 @@ void Gem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Gem *>(_o);
-        Q_UNUSED(_t)
+        (void)_t;
         switch (_id) {
         case 0: _t->mouseClicked((*reinterpret_cast< Gem*(*)>(_a[1]))); break;
         case 1: _t->on_timer_timeout(); break;
@@ -82,12 +81,12 @@ void Gem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
-        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
         case 0:
             switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< Gem* >(); break;
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< Gem* >(); break;
             }
             break;
         }
@@ -103,12 +102,18 @@ void Gem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject Gem::staticMetaObject = { {
-    &QPushButton::staticMetaObject,
-    qt_meta_stringdata_Gem.data,
+const QMetaObject Gem::staticMetaObject = { {
+    QMetaObject::SuperData::link<QPushButton::staticMetaObject>(),
+    qt_meta_stringdata_Gem.offsetsAndSize,
     qt_meta_data_Gem,
     qt_static_metacall,
     nullptr,
+qt_incomplete_metaTypeArray<qt_meta_stringdata_Gem_t
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<Gem *, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>
+
+
+>,
     nullptr
 } };
 
@@ -146,7 +151,7 @@ int Gem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void Gem::mouseClicked(Gem * _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
