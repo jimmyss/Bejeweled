@@ -17,7 +17,7 @@ private:
 	Ui::Log ui;
 	DButil* db;
 signals:
-	void toStarter();
+	void toStarter(QString &);
 private slots:
 	void on_pushButtonLog_clicked();
 	void on_pushButtonReg_clicked();

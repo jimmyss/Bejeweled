@@ -278,7 +278,7 @@ void Game::on_pushButtonFinish_clicked()
 {
     QMessageBox message(QMessageBox::NoIcon, "Tip", "Back successfully ");
     message.exec();
-    emit backSignal();
+    emit backSignal(score);
     //this->close();//БОДАПквўВи
 }
 

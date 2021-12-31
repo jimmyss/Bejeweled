@@ -1,20 +1,19 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'starter.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.3)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 #include <memory>
 #include "../../../starter.h"
-#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'starter.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.1.3. It"
+#elif Q_MOC_OUTPUT_REVISION != 67
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,35 +22,42 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Starter_t {
-    const uint offsetsAndSize[18];
-    char stringdata0[126];
+    QByteArrayData data[12];
+    char stringdata0[146];
 };
-#define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_Starter_t, stringdata0) + ofs), len 
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_Starter_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
 static const qt_meta_stringdata_Starter_t qt_meta_stringdata_Starter = {
     {
-QT_MOC_LITERAL(0, 7), // "Starter"
-QT_MOC_LITERAL(8, 25), // "on_pushButtonRank_clicked"
-QT_MOC_LITERAL(34, 0), // ""
-QT_MOC_LITERAL(35, 25), // "on_pushButtonHelp_clicked"
-QT_MOC_LITERAL(61, 26), // "on_pushButtonStart_clicked"
-QT_MOC_LITERAL(88, 8), // "backShow"
-QT_MOC_LITERAL(97, 8), // "afterLog"
-QT_MOC_LITERAL(106, 9), // "afterHelp"
-QT_MOC_LITERAL(116, 9) // "afterRank"
+QT_MOC_LITERAL(0, 0, 7), // "Starter"
+QT_MOC_LITERAL(1, 8, 25), // "on_pushButtonRank_clicked"
+QT_MOC_LITERAL(2, 34, 0), // ""
+QT_MOC_LITERAL(3, 35, 25), // "on_pushButtonHelp_clicked"
+QT_MOC_LITERAL(4, 61, 26), // "on_pushButtonStart_clicked"
+QT_MOC_LITERAL(5, 88, 8), // "backShow"
+QT_MOC_LITERAL(6, 97, 5), // "score"
+QT_MOC_LITERAL(7, 103, 8), // "afterLog"
+QT_MOC_LITERAL(8, 112, 8), // "QString&"
+QT_MOC_LITERAL(9, 121, 4), // "name"
+QT_MOC_LITERAL(10, 126, 9), // "afterHelp"
+QT_MOC_LITERAL(11, 136, 9) // "afterRank"
 
     },
     "Starter\0on_pushButtonRank_clicked\0\0"
     "on_pushButtonHelp_clicked\0"
     "on_pushButtonStart_clicked\0backShow\0"
-    "afterLog\0afterHelp\0afterRank"
+    "score\0afterLog\0QString&\0name\0afterHelp\0"
+    "afterRank"
 };
 #undef QT_MOC_LITERAL
 
 static const uint qt_meta_data_Starter[] = {
 
  // content:
-       9,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        7,   14, // methods
@@ -61,21 +67,21 @@ static const uint qt_meta_data_Starter[] = {
        0,       // flags
        0,       // signalCount
 
- // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   56,    2, 0x08,    0 /* Private */,
-       3,    0,   57,    2, 0x08,    1 /* Private */,
-       4,    0,   58,    2, 0x08,    2 /* Private */,
-       5,    0,   59,    2, 0x08,    3 /* Private */,
-       6,    0,   60,    2, 0x08,    4 /* Private */,
-       7,    0,   61,    2, 0x08,    5 /* Private */,
-       8,    0,   62,    2, 0x08,    6 /* Private */,
+ // slots: name, argc, parameters, tag, flags
+       1,    0,   49,    2, 0x08 /* Private */,
+       3,    0,   50,    2, 0x08 /* Private */,
+       4,    0,   51,    2, 0x08 /* Private */,
+       5,    1,   52,    2, 0x08 /* Private */,
+       7,    1,   55,    2, 0x08 /* Private */,
+      10,    0,   58,    2, 0x08 /* Private */,
+      11,    0,   59,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -86,33 +92,26 @@ void Starter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Starter *>(_o);
-        (void)_t;
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButtonRank_clicked(); break;
         case 1: _t->on_pushButtonHelp_clicked(); break;
         case 2: _t->on_pushButtonStart_clicked(); break;
-        case 3: _t->backShow(); break;
-        case 4: _t->afterLog(); break;
+        case 3: _t->backShow((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->afterLog((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->afterHelp(); break;
         case 6: _t->afterRank(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
-const QMetaObject Starter::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject Starter::staticMetaObject = { {
     QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
-    qt_meta_stringdata_Starter.offsetsAndSize,
+    qt_meta_stringdata_Starter.data,
     qt_meta_data_Starter,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_Starter_t
-
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-
-
->,
     nullptr
 } };
 
@@ -141,7 +140,7 @@ int Starter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 7)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+            *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 7;
     }
     return _id;

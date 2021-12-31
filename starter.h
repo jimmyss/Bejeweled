@@ -24,14 +24,16 @@ private:
     DButil* db;
     Help* help;
     Rank* rank;
+    int score1;
+    QString name1;
 
 private slots:
     void on_pushButtonRank_clicked();
     void on_pushButtonHelp_clicked();
     void on_pushButtonStart_clicked();
 
-    void backShow();
-    void afterLog();
+    void backShow(int score);
+    void afterLog(QString& name);
     void afterHelp();
     void afterRank();
 };

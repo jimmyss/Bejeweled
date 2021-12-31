@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Help.ui'
 **
-** Created by: Qt User Interface Compiler version 6.1.3
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -34,6 +34,7 @@ public:
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
+        font.setWeight(75);
         label->setFont(font);
         helpText = new QTextBrowser(Help);
         helpText->setObjectName(QString::fromUtf8("helpText"));

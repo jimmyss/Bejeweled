@@ -15,7 +15,7 @@ Starter::Starter(QWidget *parent)
     rank->hide();
     connect(rank, SIGNAL(backToMain()), this, SLOT(afterRank()));
     connect(help, SIGNAL(backToMain()), this, SLOT(afterHelp()));
-    connect(log, SIGNAL(toStarter()), this, SLOT(afterLog()));
+    connect(log, SIGNAL(toStarter(QString &)), this, SLOT(afterLog(QString &)));
 
     // ²¥·ÅÒôÀÖ
     //PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
@@ -61,19 +61,22 @@ void Starter::on_pushButtonHelp_clicked() {
 
 void Starter::on_pushButtonStart_clicked() {
     game = new Game();
-    connect(game, SIGNAL(backSignal()), this, SLOT(backShow()));
+    connect(game, SIGNAL(backSignal(int )), this, SLOT(backShow(int)));
     this->hide();
     game->show();
 }
 
-void Starter::backShow()
+void Starter::backShow(int score)
 {
+    score1 = score;
+    db->updateRank(name1, score1);
     this->show();
     game->close();
 }
 
-void Starter::afterLog()
+void Starter::afterLog(QString &name)
 {
+    name1 = name;
     this->show();
     log->hide();
 }

@@ -32,6 +32,7 @@ protected:
 
 private:
 	Ui::Game ui;
+	int score=0;
 	int click_x, click_y;
 	int move_x1, move_x2, move_y1, move_y2;
 	int gCounter = 0;//用于记录点了多少次方块，点两次时执行交换
@@ -51,5 +52,5 @@ private slots:
 	void on_pushButtonHint_clicked();
 	void buttonClicked();
 signals:
-	void backSignal();
+	void backSignal(int);
 };

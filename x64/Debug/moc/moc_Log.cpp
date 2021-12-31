@@ -1,20 +1,19 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Log.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.3)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 #include <memory>
 #include "../../../Log.h"
-#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Log.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.1.3. It"
+#elif Q_MOC_OUTPUT_REVISION != 67
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,21 +22,26 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Log_t {
-    const uint offsetsAndSize[10];
-    char stringdata0[65];
+    QByteArrayData data[6];
+    char stringdata0[74];
 };
-#define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_Log_t, stringdata0) + ofs), len 
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_Log_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
 static const qt_meta_stringdata_Log_t qt_meta_stringdata_Log = {
     {
-QT_MOC_LITERAL(0, 3), // "Log"
-QT_MOC_LITERAL(4, 9), // "toStarter"
-QT_MOC_LITERAL(14, 0), // ""
-QT_MOC_LITERAL(15, 24), // "on_pushButtonLog_clicked"
-QT_MOC_LITERAL(40, 24) // "on_pushButtonReg_clicked"
+QT_MOC_LITERAL(0, 0, 3), // "Log"
+QT_MOC_LITERAL(1, 4, 9), // "toStarter"
+QT_MOC_LITERAL(2, 14, 0), // ""
+QT_MOC_LITERAL(3, 15, 8), // "QString&"
+QT_MOC_LITERAL(4, 24, 24), // "on_pushButtonLog_clicked"
+QT_MOC_LITERAL(5, 49, 24) // "on_pushButtonReg_clicked"
 
     },
-    "Log\0toStarter\0\0on_pushButtonLog_clicked\0"
+    "Log\0toStarter\0\0QString&\0"
+    "on_pushButtonLog_clicked\0"
     "on_pushButtonReg_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -45,7 +49,7 @@ QT_MOC_LITERAL(40, 24) // "on_pushButtonReg_clicked"
 static const uint qt_meta_data_Log[] = {
 
  // content:
-       9,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        3,   14, // methods
@@ -55,15 +59,15 @@ static const uint qt_meta_data_Log[] = {
        0,       // flags
        1,       // signalCount
 
- // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   32,    2, 0x06,    0 /* Public */,
+ // signals: name, argc, parameters, tag, flags
+       1,    1,   29,    2, 0x06 /* Public */,
 
- // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   33,    2, 0x08,    1 /* Private */,
-       4,    0,   34,    2, 0x08,    2 /* Private */,
+ // slots: name, argc, parameters, tag, flags
+       4,    0,   32,    2, 0x08 /* Private */,
+       5,    0,   33,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -76,9 +80,9 @@ void Log::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Log *>(_o);
-        (void)_t;
+        Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->toStarter(); break;
+        case 0: _t->toStarter((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->on_pushButtonLog_clicked(); break;
         case 2: _t->on_pushButtonReg_clicked(); break;
         default: ;
@@ -86,28 +90,21 @@ void Log::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (Log::*)();
+            using _t = void (Log::*)(QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Log::toStarter)) {
                 *result = 0;
                 return;
             }
         }
     }
-    (void)_a;
 }
 
-const QMetaObject Log::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject Log::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_Log.offsetsAndSize,
+    qt_meta_stringdata_Log.data,
     qt_meta_data_Log,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_Log_t
-, QtPrivate::TypeAndForceComplete<void, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-
-
->,
     nullptr
 } };
 
@@ -136,16 +133,17 @@ int Log::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 3)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+            *reinterpret_cast<int*>(_a[0]) = -1;
         _id -= 3;
     }
     return _id;
 }
 
 // SIGNAL 0
-void Log::toStarter()
+void Log::toStarter(QString & _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE
