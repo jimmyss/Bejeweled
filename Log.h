@@ -5,7 +5,6 @@
 #include "xxlProject.h"
 #include "DButil.h"
 
-
 class Log : public QWidget
 {
 	Q_OBJECT

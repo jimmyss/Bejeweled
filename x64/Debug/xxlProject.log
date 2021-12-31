@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-﻿  Gem.cpp
+﻿  moc Log.h
+  Log.cpp
+  main.cpp
+  moc_Log.cpp
   xxlProject.vcxproj -> E:\系统默认\桌面\xxl-project\x64\Debug\xxlProject.exe
-=======
-﻿C:\Users\bxy\AppData\Local\QtMsBuild\qt_vars.targets(68,5): error : There's no Qt version assigned to project xxlProject.vcxproj for configuration Debug/x64. Please assign a Qt installation in 'Qt Project Settings'.
->>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
