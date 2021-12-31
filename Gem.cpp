@@ -27,22 +27,22 @@ void Gem::initGemPath() {
     gemPath[6] = "pictures/blk7.bmp";
     gemPath[7] = "pictures/blk1.bmp";
 
-    gemPath[8] = "pictures/explode1.png";
+   /* gemPath[8] = "pictures/explode1.png";
     gemPath[9] = "pictures/explode2.png";
     gemPath[10] = "pictures/explode3.png";
     gemPath[11] = "pictures/explode4.png";
     gemPath[12] = "pictures/explode5.png";
     gemPath[13] = "pictures/explode6.png";
-    gemPath[14] = "pictures/explode7.png";
+    gemPath[14] = "pictures/explode7.png";*/
 
 }
 
 void Gem::bomb() {
-    QTimer* timer1 = new QTimer(this);
+    /*QTimer* timer1 = new QTimer(this);
     timer1->setInterval(100);
     connect(timer1, SIGNAL(timeout()), this, SLOT(on_timer_timeout()));
-     timer1->start();
-
+     timer1->start();*/
+    delete this;
 }
 void Gem::on_timer_timeout() {
     if (num != 15) {
