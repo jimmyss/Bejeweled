@@ -11,7 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -19,16 +20,16 @@ QT_BEGIN_NAMESPACE
 class Ui_Rank
 {
 public:
-    QTextEdit *textEdit;
+    QTableView *tableView;
 
     void setupUi(QWidget *Rank)
     {
         if (Rank->objectName().isEmpty())
             Rank->setObjectName(QString::fromUtf8("Rank"));
-        Rank->resize(400, 300);
-        textEdit = new QTextEdit(Rank);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(130, 90, 104, 87));
+        Rank->resize(185, 144);
+        tableView = new QTableView(Rank);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setGeometry(QRect(0, 0, 181, 141));
 
         retranslateUi(Rank);
 

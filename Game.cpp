@@ -7,10 +7,18 @@ Game::Game(QWidget *parent)
     runtime = new QTimer(this);
     rule = new Bejewled();
     connect(runtime, SIGNAL(timeout()), this, SLOT(update()));
+
     //ÉèÖÃ±³¾°Í¼Æ¬
-    QPalette pal = this->palette();
-    pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/background.png")));
-    setPalette(pal);
+    //QPalette pal = this->palette();
+    //pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/background.png")));
+    //setPalette(pal);
+    QPalette PAllbackground = this->palette();
+    QImage ImgAllbackground("pictures/style1/bg.jpg");
+    QImage fitimgpic = ImgAllbackground.scaled(this->width(), this->height(), Qt::IgnoreAspectRatio);
+    PAllbackground.setBrush(QPalette::Window, QBrush(fitimgpic));
+    this->setPalette(PAllbackground);
+
+
     srand((int)time(0));
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
@@ -19,6 +27,7 @@ Game::Game(QWidget *parent)
             rule->adjust();
         }
     }
+
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             gems[i][j] = new Gem(rule->getGraph(i, j), 42, j, i, this);

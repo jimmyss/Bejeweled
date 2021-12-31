@@ -10,10 +10,33 @@ xxlProject::xxlProject(QWidget *parent)
     PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
     ui.setupUi(this);
+
+    //ÉèÖÃÆ¤·ô
+    QPalette PAllbackground = this->palette();
+    QImage ImgAllbackground("pictures/style1/background1.jpg");
+    QImage fitimgpic = ImgAllbackground.scaled(this->width(), this->height(), Qt::IgnoreAspectRatio);
+    PAllbackground.setBrush(QPalette::Window, QBrush(fitimgpic));
+    this->setPalette(PAllbackground);
+
+    QString buttonStyle1 = "QPushButton{background-color: rgb(245,212, 217);}" //°´Å¥ÑÕÉ«
+        "QPushButton::hover{background-color: rgb(249, 204, 226);}" //Êó±êÐüÍ£Ê±
+        "QPushButton::pressed{background-color: rgb(242, 156, 177);}" //µã»÷°´Å¥
+        "QPushButton{border-style:outset;}"                  //±ß¿òÑùÊ½£¨inset/outset£©
+        "QPushButton{border-width:4px;}"                     //±ß¿ò¿í¶ÈÏñËØ
+        "QPushButton{border-radius:10px;}"                   //±ß¿òÔ²½Ç°ë¾¶ÏñËØ
+        "QPushButton{border-color:rgba(241,158,194,30);}"    //±ß¿òÑÕÉ«
+        "QPushButton{font:bold 30px;}"                       //×ÖÌå£¬×ÖÌå´óÐ¡
+        "QPushButton{color:rgba(0,0,0,100);}"                //×ÖÌåÑÕÉ«
+        "QPushButton{padding:6px;}";                          //Ìî³Ä
+
+    ui.pushButtonStart->setStyleSheet(buttonStyle1);
+    ui.pushButtonRank->setStyleSheet(buttonStyle1);
+    ui.pushButtonHelp->setStyleSheet(buttonStyle1);
+
 }
 void xxlProject::on_pushButtonRank_clicked() {
     Rank* rank = new Rank();
-    //rank->exec();
+    rank->exec();
 }
 void xxlProject::on_pushButtonHelp_clicked() {
     Help* help = new Help();

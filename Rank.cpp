@@ -1,58 +1,44 @@
 #include "Rank.h"
-#include<QFile>
-#include <QSqlTableModel>
-#include <QTableView>
-#include <QVBoxLayout>
-#include <QStandardItemModel>
-#include <QDebug>
+//#include<QFile>
+//#include <QSqlTableModel>
+//#include <QTableView>
+//#include <QVBoxLayout>
+//#include <QStandardItemModel>
+//#include <QDebug>
+//#include <QItemDelegate>
 
-Rank::Rank(QWidget *parent)
-	: QTableView(parent)
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlRecord>
+#include <QtSql/QSqlQuery>
+#include "QtSql/QsqlQueryModel"
+#include "QDebug"
+#include "QModelIndex"
+
+
+Rank::Rank(QWidget* parent)
+    : QDialog(parent)
 {
-	//ui.setupUi(this);
-	//QPalette pal = this->palette();
-	//pal.setBrush(QPalette::Base, QBrush(QPixmap("pictures/recordbackground.jpg")));
-	//setPalette(pal);
-	//showRank();
+    ui.setupUi(this);
+	
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-	//用qtableview展示排行榜
-	QStandardItemModel* model = new QStandardItemModel(this);
-	model->setItem(0, 0, new QStandardItem("张三"));
-	model->setItem(0, 1, new QStandardItem("3"));
-	model->setItem(0, 2, new QStandardItem("男"));
-	this->setModel(model);
+	db.setDatabaseName("PlayerData.db"); 
+
+	if (!db.open())
+	{
+		qDebug() << "mistake"; //错误处理
+	}
+
+	static QSqlQueryModel* model = new QSqlQueryModel(ui.tableView);
+	model->setQuery(QString("select * from player"));
+	ui.tableView->setModel(model);
+	ui.tableView->setColumnHidden(1, true);
+	db.close();
+
+
 }
 
 Rank::~Rank()
 {
 
 }
-
-//void Rank::showRank() 
-//{
-//	QFile f("./Rank.txt");
-//	QString displayString;
-//	if (!f.open(QIODevice::ReadOnly | QIODevice::Text))//打开指定文件
-//	{
-//		ui.textEdit->append("not successful");
-//	}
-//
-//	while (!f.atEnd())
-//	{
-//		QByteArray line = f.readLine();
-//		QString str(line);
-//		displayString.append(str);
-//	}
-//
-//	ui.textEdit->setText(displayString);
-//	f.close();
-//
-	//用qtableview展示排行榜
-	//QStandardItemModel* model = new QStandardItemModel(this);
-	//model->setItem(0, 0, new QStandardItem("张三"));
-	//model->setItem(0, 1, new QStandardItem("3"));
-	//model->setItem(0, 2, new QStandardItem("男"));
-	//this->setModal(model);
-//}
-//
-//

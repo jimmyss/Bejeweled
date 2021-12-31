@@ -1,4 +1,4 @@
-﻿  moc Rank.h
+﻿  uic Rank.ui
   Rank.cpp
   xxlProject.cpp
   moc_Rank.cpp

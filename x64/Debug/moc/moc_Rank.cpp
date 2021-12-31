@@ -63,7 +63,7 @@ void Rank::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
 }
 
 QT_INIT_METAOBJECT const QMetaObject Rank::staticMetaObject = { {
-    &QTableView::staticMetaObject,
+    &QDialog::staticMetaObject,
     qt_meta_stringdata_Rank.data,
     qt_meta_data_Rank,
     qt_static_metacall,
@@ -82,12 +82,12 @@ void *Rank::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_Rank.stringdata0))
         return static_cast<void*>(this);
-    return QTableView::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
 int Rank::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QTableView::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP
