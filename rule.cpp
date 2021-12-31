@@ -148,7 +148,6 @@ void Bejewled::dispaly() {
         }
         qDebug() << " ";
     }
-    
 }
 
 void Bejewled::showBomb(Gem* gems[10][10],vector<vector<int>> &delM) {
