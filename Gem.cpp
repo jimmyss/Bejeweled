@@ -7,6 +7,7 @@ Gem::Gem(int type, int len, int x, int y, QWidget* parent, int offset) : QPushBu
     setGeometry(len * x + 20, len * y + 100, len, len);
     setIcon(QIcon(gemPath[type]));
     setIconSize(QSize(len, len));
+    setFlat(true);
     show();
 
 
