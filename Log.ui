@@ -6,8 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>514</width>
     <height>380</height>
+=======
+    <width>550</width>
+    <height>148</height>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +21,15 @@
   <widget class="QLabel" name="labelName">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>110</x>
      <y>230</y>
      <width>41</width>
+=======
+     <x>20</x>
+     <y>25</y>
+     <width>72</width>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
      <height>20</height>
     </rect>
    </property>
@@ -29,9 +40,15 @@
   <widget class="QLabel" name="labelPassword">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>110</x>
      <y>270</y>
      <width>31</width>
+=======
+     <x>20</x>
+     <y>60</y>
+     <width>72</width>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
      <height>21</height>
     </rect>
    </property>
@@ -42,10 +59,17 @@
   <widget class="QPushButton" name="pushButtonLog">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>110</x>
      <y>310</y>
      <width>93</width>
      <height>51</height>
+=======
+     <x>20</x>
+     <y>100</y>
+     <width>93</width>
+     <height>28</height>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
     </rect>
    </property>
    <property name="text">
@@ -55,10 +79,17 @@
   <widget class="QPushButton" name="pushButtonReg">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>240</x>
      <y>310</y>
      <width>93</width>
      <height>51</height>
+=======
+     <x>120</x>
+     <y>100</y>
+     <width>93</width>
+     <height>28</height>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
     </rect>
    </property>
    <property name="text">
@@ -68,9 +99,15 @@
   <widget class="QLineEdit" name="lineEditName">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>180</x>
      <y>230</y>
      <width>211</width>
+=======
+     <x>120</x>
+     <y>20</y>
+     <width>401</width>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
      <height>31</height>
     </rect>
    </property>
@@ -78,9 +115,15 @@
   <widget class="QLineEdit" name="lineEditPassword">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>180</x>
      <y>270</y>
      <width>211</width>
+=======
+     <x>120</x>
+     <y>60</y>
+     <width>401</width>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
      <height>31</height>
     </rect>
    </property>
@@ -88,9 +131,15 @@
   <widget class="QLineEdit" name="lineEditHint">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>360</x>
      <y>310</y>
      <width>71</width>
+=======
+     <x>220</x>
+     <y>100</y>
+     <width>301</width>
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
      <height>31</height>
     </rect>
    </property>

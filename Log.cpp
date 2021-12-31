@@ -5,6 +5,7 @@ Log::Log(QWidget *parent)
 {
 	ui.setupUi(this);
 	ui.lineEditHint->setFocusPolicy(Qt::NoFocus);
+<<<<<<< HEAD
 
 	//ÉèÖÃÆ¤·ô
 	QPalette PAllbackground = this->palette();
@@ -26,6 +27,8 @@ Log::Log(QWidget *parent)
 
 	ui.pushButtonLog->setStyleSheet(buttonStyle1);
 	ui.pushButtonReg->setStyleSheet(buttonStyle1);
+=======
+>>>>>>> 369c4630d7dd8026acb0db7e96671758f25dbe9b
 }
 
 Log::~Log()
