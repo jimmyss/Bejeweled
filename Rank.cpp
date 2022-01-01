@@ -14,16 +14,18 @@ Rank::Rank(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	setAttribute(Qt::WA_DeleteOnClose);
 
-	db.setDatabaseName("PlayerData.db");
+	//QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-	if (!db.open())
-	{
-		qDebug() << "mistake"; //错误处理
-	}
+	//db.setDatabaseName("PlayerData.db");
 
-	static QSqlQueryModel* model = new QSqlQueryModel(ui.tableView);
+	//if (!db.open())
+	//{
+	//	qDebug() << "mistake"; //错误处理
+	//}
+
+	 QSqlQueryModel* model = new QSqlQueryModel(ui.tableView);
 	model->setQuery(QString("select * from player"));
 	ui.tableView->setModel(model);
 	ui.tableView->setColumnHidden(1, true);
@@ -32,7 +34,7 @@ Rank::Rank(QWidget *parent)
 	ui.tableView->horizontalHeader()->setStyleSheet("QHeaderView::section{background-color:rgb(245,212, 217);font:13pt '宋体';color: black;};");
 	ui.tableView->setStyleSheet("selection-background-color:pink;"); //设置选中背景色
 
-	db.close();
+	//db.close();
 }
 
 Rank::~Rank()

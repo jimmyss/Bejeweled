@@ -75,7 +75,7 @@ void Log::on_pushButtonLog_clicked() {
 	}
 	if (res == 1) {
 		//登录成功做跳转
-		emit toStarter();
+		emit toStarter(name);
 	}
 }
 void Log::on_pushButtonReg_clicked() {

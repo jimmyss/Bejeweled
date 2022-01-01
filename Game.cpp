@@ -399,6 +399,6 @@ void Game::on_pushButtonFinish_clicked()
     QMessageBox message(QMessageBox::NoIcon, "Tip", "Back successfully ");
     qDebug() << "your score: " << roundNumber;
     message.exec();
-    emit backSignal();
+    emit backSignal(roundNumber);
     //this->close();//±¾´°¿ÚÒþ²Ø
 }

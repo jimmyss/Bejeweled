@@ -9,17 +9,11 @@ Starter::Starter(QWidget *parent)
     log = new Log(this);
     log->setDB(db);
     help = new Help(this);
-    rank = new Rank(this);
-    rank->setDB(db);
     help->hide();
-    rank->hide();
-    connect(rank, SIGNAL(backToMain()), this, SLOT(afterRank()));
+    
     connect(help, SIGNAL(backToMain()), this, SLOT(afterHelp()));
-    connect(log, SIGNAL(toStarter()), this, SLOT(afterLog()));
+    connect(log, SIGNAL(toStarter(QString&)), this, SLOT(afterLog(QString&)));
   
-     
-
-
     // ²¥·ÅÒôÀÖ
     PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
@@ -47,7 +41,9 @@ Starter::Starter(QWidget *parent)
 }
 
 void Starter::on_pushButtonRank_clicked() {
-    
+    rank = new Rank();
+    rank->setDB(db);
+    connect(rank, SIGNAL(backToMain()), this, SLOT(afterRank()));
     rank->show();
 }
 
@@ -65,20 +61,24 @@ void Starter::on_pushButtonHelp_clicked() {
 void Starter::on_pushButtonStart_clicked() {
     PlaySound(NULL, NULL, NULL);
     game = new Game();
-    connect(game, SIGNAL(backSignal()), this, SLOT(backShow()));
+    connect(game, SIGNAL(backSignal(int)), this, SLOT(backShow(int)));
     this->hide();
     game->show();
 }
 
-void Starter::backShow()
+void Starter::backShow(int score1)
 {
+    score = score1;
+    qDebug() << score;
     PlaySound(TEXT("music.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    db->updateRank(name, score);
     this->show();
     game->close();
 }
 
-void Starter::afterLog()
+void Starter::afterLog(QString & name1)
 {
+    name = name1;
     this->show();
     log->hide();
 }
@@ -92,5 +92,5 @@ void Starter::afterHelp()
 void Starter::afterRank()
 {
     //this->show();
-    rank->hide();
+    rank->close();
 }

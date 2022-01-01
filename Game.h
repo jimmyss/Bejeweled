@@ -66,5 +66,5 @@ private slots:
 	void on_pushButtonHint_clicked();
 	void buttonClicked();
 signals:
-	void backSignal();
+	void backSignal(int);
 };

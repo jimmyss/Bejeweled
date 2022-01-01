@@ -59,15 +59,15 @@ static const uint qt_meta_data_Game[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x06 /* Public */,
+       1,    1,   34,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    0,   37,    2, 0x08 /* Private */,
+       3,    0,   37,    2, 0x08 /* Private */,
+       4,    0,   38,    2, 0x08 /* Private */,
+       5,    0,   39,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -83,7 +83,7 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         auto *_t = static_cast<Game *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->backSignal(); break;
+        case 0: _t->backSignal((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->on_pushButtonFinish_clicked(); break;
         case 2: _t->on_pushButtonHint_clicked(); break;
         case 3: _t->buttonClicked(); break;
@@ -92,14 +92,13 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (Game::*)();
+            using _t = void (Game::*)(int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Game::backSignal)) {
                 *result = 0;
                 return;
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Game::staticMetaObject = { {
@@ -143,9 +142,10 @@ int Game::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Game::backSignal()
+void Game::backSignal(int _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

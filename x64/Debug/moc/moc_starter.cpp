@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Starter_t {
-    QByteArrayData data[9];
-    char stringdata0[126];
+    QByteArrayData data[12];
+    char stringdata0[146];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,15 +38,19 @@ QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 25), // "on_pushButtonHelp_clicked"
 QT_MOC_LITERAL(4, 61, 26), // "on_pushButtonStart_clicked"
 QT_MOC_LITERAL(5, 88, 8), // "backShow"
-QT_MOC_LITERAL(6, 97, 8), // "afterLog"
-QT_MOC_LITERAL(7, 106, 9), // "afterHelp"
-QT_MOC_LITERAL(8, 116, 9) // "afterRank"
+QT_MOC_LITERAL(6, 97, 5), // "score"
+QT_MOC_LITERAL(7, 103, 8), // "afterLog"
+QT_MOC_LITERAL(8, 112, 8), // "QString&"
+QT_MOC_LITERAL(9, 121, 4), // "name"
+QT_MOC_LITERAL(10, 126, 9), // "afterHelp"
+QT_MOC_LITERAL(11, 136, 9) // "afterRank"
 
     },
     "Starter\0on_pushButtonRank_clicked\0\0"
     "on_pushButtonHelp_clicked\0"
     "on_pushButtonStart_clicked\0backShow\0"
-    "afterLog\0afterHelp\0afterRank"
+    "score\0afterLog\0QString&\0name\0afterHelp\0"
+    "afterRank"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,17 +71,17 @@ static const uint qt_meta_data_Starter[] = {
        1,    0,   49,    2, 0x08 /* Private */,
        3,    0,   50,    2, 0x08 /* Private */,
        4,    0,   51,    2, 0x08 /* Private */,
-       5,    0,   52,    2, 0x08 /* Private */,
-       6,    0,   53,    2, 0x08 /* Private */,
-       7,    0,   54,    2, 0x08 /* Private */,
-       8,    0,   55,    2, 0x08 /* Private */,
+       5,    1,   52,    2, 0x08 /* Private */,
+       7,    1,   55,    2, 0x08 /* Private */,
+      10,    0,   58,    2, 0x08 /* Private */,
+      11,    0,   59,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -93,14 +97,13 @@ void Starter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 0: _t->on_pushButtonRank_clicked(); break;
         case 1: _t->on_pushButtonHelp_clicked(); break;
         case 2: _t->on_pushButtonStart_clicked(); break;
-        case 3: _t->backShow(); break;
-        case 4: _t->afterLog(); break;
+        case 3: _t->backShow((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->afterLog((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->afterHelp(); break;
         case 6: _t->afterRank(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Starter::staticMetaObject = { {
