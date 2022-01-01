@@ -50,28 +50,21 @@ void Log::on_pushButtonLog_clicked() {
 
 	if (name.isEmpty()) {
 		ui.lineEditHint->setText("用户名不能为空！");
-		//QMessageBox::about(NULL, "警告", "用户名不能为空！");
 		return;
 	}
 	else if (password.isEmpty()) {
 		ui.lineEditHint->setText("密码不能为空！");
-		//QMessageBox::about(NULL, "警告", "密码不能为空！");
 		return;
 	}
 	else {
 		res = db->login(name, password);
 	}
 
-
 	if (res == -1) {
 		ui.lineEditHint->setText("操作失败，请再次尝试");
-		//QMessageBox::about(NULL, "警告", "错误！");
-
 	}
 	if (res == 0) {
 		ui.lineEditHint->setText("用户名或密码错误");
-		//QMessageBox::about(NULL, "警告", "用户名或密码错误");
-
 	}
 	if (res == 1) {
 		//登录成功做跳转
@@ -86,32 +79,24 @@ void Log::on_pushButtonReg_clicked() {
 
 	if (name.isEmpty()) {
 		ui.lineEditHint->setText("用户名不能为空！");
-		//QMessageBox::about(NULL, "警告", "用户名不能为空！");
 		return;
 	}
 	else if (password.isEmpty()) {
 		ui.lineEditHint->setText("密码不能为空！");
-		//QMessageBox::about(NULL, "警告", "密码不能为空！");
 		return;
 	}
 	else {
-		res = db->login(name, password);
+		res = db->registrate(name, password);
 	}
 
 	if (res == -1) {
 		ui.lineEditHint->setText("操作失败，请再次尝试");
-		//QMessageBox::about(NULL, "警告", "错误！");
-
 	}
 	if (res == 0) {
 		ui.lineEditHint->setText("用户名重复！");
-		//QMessageBox::about(NULL, "警告", "用户名重复！");
-
 	}
 	if (res == 1) {
 		ui.lineEditHint->setText("注测成功！");
-		//QMessageBox::about(NULL, "提示", "注测成功！");
-
 	}
 }
 

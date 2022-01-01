@@ -15,10 +15,7 @@ void DButil::initDB()
 	}
 }
 
-DButil::DButil()
-{
-	
-}
+DButil::DButil() { }
 
 int DButil::login(QString name, QString password)
 {
@@ -109,7 +106,7 @@ int DButil::updateRank(QString name, int rank)
 	QString update_sql = "update player set rank = :rank where name = :name";
 	QString select_sql = "select rank from player where name = ?";
 
-	int historyRank;
+	int historyRank = 0;
 
 	sql_query.prepare(select_sql);
 	sql_query.addBindValue(name);

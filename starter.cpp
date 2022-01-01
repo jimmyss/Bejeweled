@@ -53,10 +53,7 @@ void Starter::showLog()
     this->hide();
 }
 
-void Starter::on_pushButtonHelp_clicked() {
-    
-    help->show();
-}
+void Starter::on_pushButtonHelp_clicked() { help->show(); }
 
 void Starter::on_pushButtonStart_clicked() {
     PlaySound(NULL, NULL, NULL);
@@ -83,14 +80,6 @@ void Starter::afterLog(QString & name1)
     log->hide();
 }
 
-void Starter::afterHelp()
-{
-    //this->show();
-    help->hide();
-}
+void Starter::afterHelp(){ help->hide(); }
 
-void Starter::afterRank()
-{
-    //this->show();
-    rank->close();
-}
+void Starter::afterRank(){ rank->close(); }

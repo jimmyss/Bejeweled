@@ -150,11 +150,6 @@ void Bejewled::switchGem(int i, int j, int a, int b) {
 
 Bejewled::Bejewled() {
     graph = vector<vector<int>>(row, vector<int>(col, 7));
-    /*for (int i = 0; i < row; ++i) {
-        for (int j = 0; j < col; ++j) {
-            graph[i][j] = rand() % 3;
-        }
-    }*/
 }
 
 void Bejewled::dispaly() {
@@ -333,7 +328,6 @@ void Bejewled::check(bool& c) {
         }
     }
 }
-
 
 // ajust the graph to avoid left 3-item cases
 void Bejewled::adjust(vector<vector<int>>& fallM, vector<vector<int>>& genM, bool& endFlag) {

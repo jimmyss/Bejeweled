@@ -1,19 +1,20 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Game.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 #include <memory>
 #include "../../../Game.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Game.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.14.2. It"
+#elif Q_MOC_OUTPUT_REVISION != 68
+#error "This file was generated using the moc from 6.1.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,22 +23,19 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Game_t {
-    QByteArrayData data[6];
+    const uint offsetsAndSize[12];
     char stringdata0[85];
 };
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Game_t, stringdata0) + ofs \
-        - idx * sizeof(QByteArrayData)) \
-    )
+#define QT_MOC_LITERAL(ofs, len) \
+    uint(offsetof(qt_meta_stringdata_Game_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_Game_t qt_meta_stringdata_Game = {
     {
-QT_MOC_LITERAL(0, 0, 4), // "Game"
-QT_MOC_LITERAL(1, 5, 10), // "backSignal"
-QT_MOC_LITERAL(2, 16, 0), // ""
-QT_MOC_LITERAL(3, 17, 27), // "on_pushButtonFinish_clicked"
-QT_MOC_LITERAL(4, 45, 25), // "on_pushButtonHint_clicked"
-QT_MOC_LITERAL(5, 71, 13) // "buttonClicked"
+QT_MOC_LITERAL(0, 4), // "Game"
+QT_MOC_LITERAL(5, 10), // "backSignal"
+QT_MOC_LITERAL(16, 0), // ""
+QT_MOC_LITERAL(17, 27), // "on_pushButtonFinish_clicked"
+QT_MOC_LITERAL(45, 25), // "on_pushButtonHint_clicked"
+QT_MOC_LITERAL(71, 13) // "buttonClicked"
 
     },
     "Game\0backSignal\0\0on_pushButtonFinish_clicked\0"
@@ -48,7 +46,7 @@ QT_MOC_LITERAL(5, 71, 13) // "buttonClicked"
 static const uint qt_meta_data_Game[] = {
 
  // content:
-       8,       // revision
+       9,       // revision
        0,       // classname
        0,    0, // classinfo
        4,   14, // methods
@@ -58,13 +56,13 @@ static const uint qt_meta_data_Game[] = {
        0,       // flags
        1,       // signalCount
 
- // signals: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x06 /* Public */,
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    1,   38,    2, 0x06,    0 /* Public */,
 
- // slots: name, argc, parameters, tag, flags
-       3,    0,   37,    2, 0x08 /* Private */,
-       4,    0,   38,    2, 0x08 /* Private */,
-       5,    0,   39,    2, 0x08 /* Private */,
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       3,    0,   41,    2, 0x08,    2 /* Private */,
+       4,    0,   42,    2, 0x08,    3 /* Private */,
+       5,    0,   43,    2, 0x08,    4 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -81,7 +79,7 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Game *>(_o);
-        Q_UNUSED(_t)
+        (void)_t;
         switch (_id) {
         case 0: _t->backSignal((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->on_pushButtonFinish_clicked(); break;
@@ -101,12 +99,18 @@ void Game::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject Game::staticMetaObject = { {
+const QMetaObject Game::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_Game.data,
+    qt_meta_stringdata_Game.offsetsAndSize,
     qt_meta_data_Game,
     qt_static_metacall,
     nullptr,
+qt_incomplete_metaTypeArray<qt_meta_stringdata_Game_t
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+
+
+>,
     nullptr
 } };
 
@@ -135,7 +139,7 @@ int Game::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 4)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
         _id -= 4;
     }
     return _id;
